@@ -1,106 +1,32 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import ReactConfetti from "react-confetti";
+import { BeerConfetti } from "../components/beerConfetti/BeerConfetti";
+import { MuCards } from "../components/muCards/MuCards";
+import { BirthdayCards } from "../components/birthdayCards/BirthdayCards";
 import styles from "./linkejimas.module.css";
-import dynamic from "next/dynamic";
 
-const ReactConfetti = dynamic(() => import("react-confetti"), {
-  ssr: false,
-});
+interface SpecialCard {
+  id: number;
+  title: string;
+  image: string;
+  imageWidth: number;
+  imageHeight: number;
+  isFirstCard?: boolean;
+  isSlideshow?: boolean;
+  slideshowImages?: string[];
+  text: string[];
+  style?: React.CSSProperties;
+}
 
-// Custom beer confetti component
-const BeerConfetti = () => {
-  const [beers, setBeers] = useState<
-    Array<{
-      id: number;
-      x: number;
-      y: number;
-      rotation: number;
-      speed: number;
-      sway: number;
-      size: number;
-    }>
-  >([]);
-
-  useEffect(() => {
-    // Create initial beer elements with more varied positions
-    const initialBeers = Array.from({ length: 60 }, (_, i) => ({
-      id: i,
-      x: Math.random() * window.innerWidth,
-      y: -Math.random() * 1000 - 100, // More scattered starting heights
-      rotation: Math.random() * 360,
-      speed: 4 + Math.random() * 6, // Faster fall speeds
-      sway: 1 + Math.random() * 2, // More pronounced sway
-      size: 15 + Math.random() * 10, // Random sizes between 15-25px
-    }));
-    setBeers(initialBeers);
-
-    // Animation loop
-    const interval = setInterval(() => {
-      setBeers((prevBeers) =>
-        prevBeers.map((beer) => ({
-          ...beer,
-          y: beer.y + beer.speed,
-          rotation: beer.rotation + beer.speed * 0.8, // Faster rotation
-          x: beer.x + Math.sin(beer.y / 20) * beer.sway, // More pronounced sway
-        }))
-      );
-    }, 30); // Faster update interval
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const getOpacity = (y: number) => {
-    const fadeStart = window.innerHeight - 200; // Start fading 200px from bottom
-    const fadeEnd = window.innerHeight;
-
-    if (y < fadeStart) return 1;
-    if (y > fadeEnd) return 0;
-
-    // Calculate opacity based on position in fade zone
-    return 1 - (y - fadeStart) / (fadeEnd - fadeStart);
-  };
-
-  return (
-    <div className={styles.beerConfettiContainer}>
-      {beers.map((beer) => (
-        <Image
-          key={beer.id}
-          src="/beer.png"
-          alt="Beer"
-          width={beer.size}
-          height={beer.size}
-          style={{
-            position: "fixed",
-            left: beer.x,
-            top: beer.y,
-            transform: `rotate(${beer.rotation}deg)`,
-            transition: "transform 0.03s linear, opacity 0.2s ease-out",
-            zIndex: 1000,
-            opacity: getOpacity(beer.y),
-          }}
-        />
-      ))}
-    </div>
-  );
-};
-
-// Birthday wishes
-const birthdayWishes = [
-  "Gimtadienio proga linkiu tau begalės laimės ir šypsenų! 🎉",
-  "Tebūnie šis tavo geriausias gimtadienis! 🎂",
-  "Linkiu, kad visi tavo svajonės išsipildytų! ⭐",
-  "Tau - begalės džiaugsmo ir meilės! ❤️",
-  "Tebūnie šis tavo nuostabus metų pradžia! 🌟",
-  "Linkiu tau visko, ko tik nori! 🎁",
-  "Tau - begalės smagumo ir linksmybių! 🎈",
-  "Tebūnie šis tavo geriausias gimtadienis! 🎊",
-  "Linkiu tau visko geriausio! 🌈",
-  "Tau - begalės laimės ir džiaugsmo! 🎯",
-];
+interface MuWish {
+  player: string;
+  wish: string;
+}
 
 // Manchester United themed wishes
-const muWishes = [
+const muWishes: MuWish[] = [
   {
     player: "Marcus Rashford",
     wish: "Oi mate! Proper buzzing to wish a top Red dev his 29th! Keep coding and supporting United like you score at CS - pure class! 🎯",
@@ -147,21 +73,156 @@ const muWishes = [
   },
 ];
 
+// Add this before specialCards array
+const momoImages = Array.from({ length: 10 }, (_, i) => `/momo/${i + 1}.jpeg`);
+
+const specialCards: SpecialCard[] = [
+  {
+    id: 0,
+    title: "GIMTADIENAINIUS",
+    image: "/chebra.jpeg",
+    imageWidth: 0,
+    imageHeight: 0,
+    isFirstCard: true,
+    text: [
+      "Su gimtadieniu, Ainiusai! 🎉",
+      "Linkiu tau begalės laimės, džiaugsmo ir šypsenų! Tegul šie metai būna pilni nuotykių ir naujų iššūkių! 🌟",
+      "Tau - begalės sėkmės ir meilės! ❤️",
+    ],
+  },
+  {
+    id: 1,
+    title: "Žygintas",
+    image: "/zzygis.jpg",
+    imageWidth: 0,
+    imageHeight: 0,
+    text: [
+      "Su gimtadieniu, sugulove. Linkiu, kad ateinantys metai turėtų daug sėkmingų statymų su 257 koeficientu, kad LoL pakiltum virš D4, kad CS pakiltum iki Supreme Master (no fking clue, koks tavo rank&apos;as šiaip), kad pradėtum lengvai lipti į šešetukus, kad su Arnu uždirbtumėt milijonus, kad Rūta ir toliau būtų kantri tavo knarkimams. Ir visų svarbiausia, linkiu daugiau patekti pas mane į psichopatus sąrašus (bet kad tai įvyktų, turėsim daugiau susitikt 😊). Myl ❤️",
+    ],
+  },
+  {
+    id: 2,
+    title: "Aurimas",
+    image: "/aurimas.jpeg",
+    imageWidth: 0,
+    imageHeight: 0,
+    text: ["U3UgR2ltdGFkaWVuaXUhIFNrYW5hd XMgZ2ltdGFkaWVuaW5pbyBhbGF1cyA8Mw=="],
+  },
+  {
+    id: 3,
+    title: "Justė",
+    image: "/juste.jpeg",
+    imageWidth: 0,
+    imageHeight: 0,
+    text: [
+      `Ainiau, linkiu, kad visuomet turėtum draugų, su kuriais galėtum "iškelti ranką"; ir būtum suprastas 😊😊😊`,
+    ],
+  },
+  {
+    id: 4,
+    title: "Simonas",
+    image: "/simas.jpeg",
+    imageWidth: 0,
+    imageHeight: 0,
+    text: [
+      "šimto prisitraukimų, tūkstančio atsispaudimų, milijono laimės",
+      "Drambliai pavydi tavo didelės širdies - niekad nepamesk šito! ❤️",
+    ],
+  },
+  {
+    id: 5,
+    title: "Viktorija",
+    image: "/vika.jpeg",
+    imageWidth: 0,
+    imageHeight: 0,
+    text: ["CC000817681LT"],
+  },
+  {
+    id: 6,
+    title: "Momo",
+    image: momoImages[0],
+    imageWidth: 0,
+    imageHeight: 0,
+    isSlideshow: true,
+    slideshowImages: momoImages,
+    text: [
+      "Ainiuxai! Su gimtadieniu sveikinu tave!",
+      "Ačiū, kad esi geriausias plaukimo mokytojas ir puikus kelionių draugas. 💖",
+      "Neačiū, kad vis dar esi labiausiai mane išgąsdinęs žmogus iš visų visų, kas yra gąsdinę 😔",
+      "Linkiu tau daug daug meilės, kad pagaliau turėtum gyvūniuką beždžioniuką, kad niekad nesibaigtų chickenraisai ir changai, kad visada lėktuvuose būtų patogu miegoti ir kad nepamestum savo kaip kelionių influencerio kelio, nes sekėjams jau trūksta kontento!",
+      "Ilgiausių metų ir činčin! 🍻✨",
+    ],
+  },
+  {
+    id: 7,
+    title: "Robke",
+    image: "/robke.jpeg",
+    imageWidth: 0,
+    imageHeight: 0,
+    text: [
+      "Ainiau,",
+      `Ofisiukas be tavęs – kaip kava be kofeino: kažkas vyksta, bet jau nebe tas. Kiekviena diena su tavim ten buvo kaip netikėtas bonusas – truputį darbo, daug juoko ir labai daug "nu, dar po vieną poolą".`,
+      "Smagu, kad iš visų užduočių kalnų išlindo draugas, su kuriuo galima ir sudėlioti mintis, ir pasiųsti visas mintis po velniop. Tokių žmonių nedaug – o dar mažiau tokių, kurie net ir po ofiso lieka gyvenime.",
+      "Nežinau, ar čia gimtadienio sveikinimas, ar tiesiog gera proga pasakyti – smagu, kad esi. Ir gerai, kad esi būtent toks koks esi. Nereikia nei tobulinimų, nei updeitų!",
+    ],
+  },
+  {
+    id: 8,
+    title: "Tomas",
+    image: "/tomas.jpeg",
+    imageWidth: 0,
+    imageHeight: 0,
+    text: [
+      "Sveikinimai Tortadienainiaus proga!",
+      "Linkiu, kad kiekviena diena būtų kaip šventė – su šypsena, nuotykiais ir gera muzika fone (taip, Linkin Park vis dar skamba galvoje pagalvojus apie Tave :D).",
+      `Tvirtų, sveikų santykių, daug kelionių ten, kur dar nesi buvęs, ir neprarasti to "chill" nusiteikimo, kuris Tave išskiria iš kitų. Tegul Tave visada lydi kolegos-draugai – kaip pats sakei, tada ir dirbti nebereikia.`,
+      "Gražios šventės ir dar gražesnių metų!",
+    ],
+  },
+  {
+    id: 9,
+    title: "Liucija",
+    image: "/kilimainius.jpg",
+    imageWidth: 0,
+    imageHeight: 0,
+    text: ["Stay sexy, Gargždų Bieberi ❤️"],
+  },
+  {
+    id: 10,
+    title: "Valdas",
+    image: "/valdelio.jpg",
+    imageWidth: 0,
+    imageHeight: 0,
+    text: ["linkiu niekad fpl'o nelaimet 🙂 Ainius GAYYYYY"],
+  },
+  {
+    id: 11,
+    title: "Rūta",
+    image: "/sully.gif",
+    imageWidth: 0,
+    imageHeight: 0,
+    text: ["aš tave labiau 🫰"],
+    style: {
+      borderRadius: "20px",
+      overflow: "hidden",
+    },
+  },
+];
+
 export default function Linkejimas() {
   const [windowSize, setWindowSize] = useState({
-    width: 0,
-    height: 0,
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
+    height: typeof window !== "undefined" ? window.innerHeight : 0,
   });
-  const [showConfetti, setShowConfetti] = useState(true);
-  const [isMUTheme, setIsMUTheme] = useState(false);
-  const [showBeerConfetti, setShowBeerConfetti] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [isMuTheme, setIsMuTheme] = useState(false);
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState<"left" | "right">(
+    "right"
+  );
+  const [slideshowIndex, setSlideshowIndex] = useState(0);
 
   useEffect(() => {
-    setWindowSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-
     const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,
@@ -170,135 +231,106 @@ export default function Linkejimas() {
     };
 
     window.addEventListener("resize", handleResize);
-
-    const timer = setTimeout(() => {
-      setShowConfetti(false);
-    }, 5000);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(timer);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Handle theme change
-  const handleThemeChange = () => {
-    setIsMUTheme(!isMUTheme);
-    if (!isMUTheme) {
-      setShowBeerConfetti(true);
-      setTimeout(() => setShowBeerConfetti(false), 5000);
+  useEffect(() => {
+    if (showConfetti) {
+      const timer = setTimeout(() => {
+        setShowConfetti(false);
+      }, 5000);
+      return () => clearTimeout(timer);
     }
+  }, [showConfetti]);
+
+  useEffect(() => {
+    if (specialCards[currentCardIndex]?.isSlideshow) {
+      const interval = setInterval(() => {
+        setSlideshowIndex((prev) =>
+          prev ===
+          (specialCards[currentCardIndex].slideshowImages?.length || 1) - 1
+            ? 0
+            : prev + 1
+        );
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [currentCardIndex, specialCards]);
+
+  const nextCard = () => {
+    setSlideDirection("right");
+    setCurrentCardIndex((prev) =>
+      prev === specialCards.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevCard = () => {
+    setSlideDirection("left");
+    setCurrentCardIndex((prev) =>
+      prev === 0 ? specialCards.length - 1 : prev - 1
+    );
+  };
+
+  const handleThemeChange = () => {
+    setIsMuTheme(!isMuTheme);
+    setShowConfetti(true);
   };
 
   return (
-    <div className={`${styles.container} ${isMUTheme ? styles.muTheme : ""}`}>
-      <Image
-        src={isMUTheme ? "/muu.webp" : "/a.jpg"}
-        alt={isMUTheme ? "Manchester United Logo" : "Logo"}
-        width={100}
-        height={100}
-        className={styles.logo}
-      />
-      <button className={styles.themeButton} onClick={handleThemeChange}>
-        Keisti temą
+    <main className={`${styles.main} ${isMuTheme ? styles.muTheme : ""}`}>
+      <div className={styles.logoContainer}>
+        <Image
+          src={isMuTheme ? "/muu.webp" : "/ainiusas.png"}
+          alt={isMuTheme ? "Manchester United Logo" : "Logo"}
+          width={150}
+          height={150}
+          className={styles.logo}
+        />
+      </div>
+
+      <button onClick={handleThemeChange} className={styles.themeButton}>
+        Norėčiau pakeisti temą
       </button>
-      {showConfetti && !isMUTheme && (
-        <ReactConfetti
-          width={windowSize.width}
-          height={windowSize.height}
-          recycle={false}
-          numberOfPieces={200}
-          gravity={0.2}
-          friction={0.97}
-          wind={0.01}
-          initialVelocityX={4}
-          initialVelocityY={10}
-          tweenDuration={2000}
-          colors={[
-            "#FFD700", // Gold
-            "#FF69B4", // Hot Pink
-            "#00CED1", // Turquoise
-            "#FF6B6B", // Coral
-            "#98FB98", // Pale Green
-            "#DDA0DD", // Plum
-            "#87CEEB", // Sky Blue
-            "#FFA500", // Orange
-            "#9370DB", // Medium Purple
-            "#FF1493", // Deep Pink
-          ]}
+
+      {showConfetti && (
+        <>
+          {!isMuTheme && (
+            <ReactConfetti
+              width={windowSize.width}
+              height={windowSize.height}
+              recycle={false}
+              numberOfPieces={200}
+              gravity={0.2}
+              colors={[
+                "#FFD700", // Gold
+                "#FF69B4", // Hot Pink
+                "#00CED1", // Turquoise
+                "#FF6B6B", // Coral
+                "#98FB98", // Pale Green
+                "#DDA0DD", // Plum
+                "#87CEEB", // Sky Blue
+                "#FFA500", // Orange
+                "#9370DB", // Medium Purple
+                "#FF1493", // Deep Pink
+              ]}
+            />
+          )}
+          {isMuTheme && <BeerConfetti />}
+        </>
+      )}
+
+      {isMuTheme ? (
+        <MuCards wishes={muWishes} />
+      ) : (
+        <BirthdayCards
+          cards={specialCards}
+          currentCardIndex={currentCardIndex}
+          slideDirection={slideDirection}
+          momoImageIndex={slideshowIndex}
+          onNextCard={nextCard}
+          onPrevCard={prevCard}
         />
       )}
-      {showBeerConfetti && isMUTheme && <BeerConfetti />}
-      <div className={styles.content}>
-        <h1>
-          {isMUTheme
-            ? "Oi mate, it's your birthday innit! Bloody brilliant! ⚽🎉"
-            : "Su gimtaaaadieniuuuuuuu 🎉"}
-        </h1>
-
-        <div className={styles.wishesContainer}>
-          {isMUTheme
-            ? // Manchester United themed wishes
-              muWishes.map((wish, index) => {
-                // Handle special cases for image names
-                const getImageName = (playerName: string) => {
-                  const firstName = playerName.split(" ")[0];
-                  switch (firstName) {
-                    case "Luke":
-                      return "luke.jpeg";
-                    case "Lisandro":
-                      return "lisandro.jpeg";
-                    case "André":
-                      return "andre.jpeg";
-                    case "Erik":
-                      return "eric.jpeg";
-                    case "Ruben":
-                      return "ruben.jpeg";
-                    default:
-                      return `${firstName.toLowerCase()}.webp`;
-                  }
-                };
-
-                return (
-                  <div key={index} className={styles.avatarWrapper}>
-                    <Image
-                      src={`/${getImageName(wish.player)}`}
-                      alt={wish.player}
-                      width={80}
-                      height={80}
-                      className={styles.avatar}
-                      style={{ objectFit: "cover" }}
-                    />
-                    <div className={styles.wishBubble}>
-                      <p>{`${wish.player}: ${wish.wish}`}</p>
-                    </div>
-                  </div>
-                );
-              })
-            : // Birthday wishes
-              birthdayWishes.map((wish, index) => (
-                <div key={index} className={styles.avatarWrapper}>
-                  <Image
-                    src={
-                      index === 0
-                        ? "/avatars/avatar1.jpg"
-                        : index === 1
-                        ? "/avatars/avatar2.jpg"
-                        : `/avatars/avatar${index + 1}.jpg`
-                    }
-                    alt={`Avatar ${index + 1}`}
-                    width={80}
-                    height={80}
-                    className={styles.avatar}
-                    style={{ objectFit: "cover" }}
-                  />
-                  <div className={styles.wishBubble}>
-                    <p>{wish}</p>
-                  </div>
-                </div>
-              ))}
-        </div>
-      </div>
-    </div>
+    </main>
   );
 }

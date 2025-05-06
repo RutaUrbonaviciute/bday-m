@@ -1,0 +1,35 @@
+.beerConfettiContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.beerDrop {
+  position: absolute;
+  font-size: 36px;
+  user-select: none;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+  transition: opacity 3s ease-out;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+  animation: fall 8s linear infinite; /* Restored animation with longer duration */
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100%) rotate(0deg);
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}

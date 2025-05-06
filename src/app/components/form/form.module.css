@@ -145,6 +145,9 @@
   position: relative;
   animation: slideUp 0.5s ease-out forwards;
   background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .gif_container img {
@@ -154,6 +157,8 @@
   border-radius: 8px;
   background: transparent;
   mix-blend-mode: multiply;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 @keyframes slideUp {
@@ -298,4 +303,216 @@
     width: 100px;
     height: 100px;
   }
+}
+
+.privacyRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 18px 0 24px 0;
+  font-size: 0.98rem;
+}
+
+/* Custom styled checkbox */
+.privacyRow input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #2b6cb0;
+  border-radius: 6px;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-right: 6px;
+  box-shadow: 0 2px 6px rgba(43, 108, 176, 0.08);
+  vertical-align: middle;
+}
+.privacyRow input[type="checkbox"]:hover,
+.privacyRow input[type="checkbox"]:checked,
+.privacyRow input[type="checkbox"]:focus {
+  cursor: pointer;
+}
+.privacyRow input[type="checkbox"]:checked {
+  background: linear-gradient(135deg, #2b6cb0 60%, #48bb78 100%);
+  border-color: #48bb78;
+}
+.privacyRow input[type="checkbox"]:checked::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+.privacyRow input[type="checkbox"]:focus {
+  box-shadow: 0 0 0 2px #4b9fe1;
+}
+
+.policyLink {
+  background: none;
+  border: none;
+  color: #2b6cb0;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 4px;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.policyLink:hover {
+  color: #48bb78;
+}
+
+.forgotPassword {
+  background: none;
+  border: none;
+  color: #2b6cb0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-top: 8px;
+  text-decoration: underline;
+  transition: color 0.2s;
+  width: 100%;
+  text-align: left;
+}
+
+.forgotPassword:hover {
+  color: #48bb78;
+}
+
+.passwordHint {
+  background: rgba(43, 108, 176, 0.1);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 12px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.passwordHint p {
+  color: #2b6cb0;
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.hintConfirmation {
+  background: rgba(43, 108, 176, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 12px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.hintConfirmation p {
+  color: #2b6cb0;
+  font-size: 0.95rem;
+  margin: 0 0 16px 0;
+  line-height: 1.4;
+}
+
+.hintButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+.confirmHint,
+.cancelHint {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-weight: 500;
+}
+
+.confirmHint {
+  background: #2b6cb0;
+  color: white;
+}
+
+.confirmHint:hover {
+  background: #48bb78;
+  transform: translateY(-1px);
+}
+
+.cancelHint {
+  background: rgba(43, 108, 176, 0.1);
+  color: #2b6cb0;
+}
+
+.cancelHint:hover {
+  background: rgba(43, 108, 176, 0.2);
+  transform: translateY(-1px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(43, 108, 176, 0.18);
+  padding: 36px 28px 24px 28px;
+  max-width: 400px;
+  width: 90vw;
+  text-align: center;
+  position: relative;
+  animation: fadeIn 0.3s;
+}
+
+.modal h2 {
+  color: #2b6cb0;
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+}
+
+.modal p {
+  color: #333;
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+}
+
+.closeModal {
+  background: #2b6cb0;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.closeModal:hover {
+  background: #48bb78;
 }

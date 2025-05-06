@@ -1,0 +1,340 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #f0f4f8;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 2rem;
+  padding: 3rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  max-width: 800px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.firstCard {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+  color: white;
+  box-shadow: 0 20px 50px rgba(255, 154, 158, 0.3);
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.image:hover {
+  transform: scale(1.03);
+}
+
+.slideshowContainer {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.slideshowImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(5px);
+}
+
+.title {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: inherit;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.text {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #4a5568;
+  margin: 0;
+  padding: 0 1rem;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.navButton {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 1rem;
+  background: #2b6cb0;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px rgba(43, 108, 176, 0.2);
+}
+
+.navButton:hover {
+  background: #2c5282;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(43, 108, 176, 0.3);
+}
+
+.navButton:disabled {
+  background: #e2e8f0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .cardWrapper {
+    padding: 1.5rem;
+    width: 100%;
+  }
+
+  .avatarWrapper {
+    gap: 2rem;
+  }
+
+  .specialAvatar {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+
+  .textContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .cardTitle {
+    font-size: 1.75rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .wishBubble {
+    padding: 1.5rem;
+  }
+
+  .wishBubble p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .cardWrapper {
+    padding: 0;
+    margin: 0;
+  }
+
+  .avatarWrapper {
+    gap: 1.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.5rem;
+  }
+
+  .wishBubble {
+    padding: 0;
+  }
+}
+
+.cardWrapper {
+  width: 100%;
+  max-width: 1400px;
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 60px auto 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.avatarWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.specialAvatar {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.cardTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: "Sour Gummy", sans-serif;
+  color: rgb(43, 108, 176);
+  text-align: center;
+  margin: 0;
+}
+
+.cardTitleFirst {
+  padding-top: 10px;
+  font-size: 1.75rem;
+  font-weight: 600;
+  font-family: "Sour Gummy", sans-serif;
+  color: rgb(43, 108, 176);
+  text-align: center;
+  margin: 0;
+}
+
+.wishBubble p {
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+  color: #4a5568;
+  font-size: 1.1rem;
+}
+
+.wishBubble p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 769px) {
+  .avatarWrapper {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .specialAvatar {
+    flex: 0 0 600px;
+    width: 600px;
+    height: 600px;
+    max-width: none;
+    object-fit: cover;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .cardTitle {
+    text-align: left;
+    padding: 0;
+  }
+
+  .wishBubble {
+    margin-top: 1rem;
+  }
+}
+
+.videoButton {
+  background: #2b6cb0;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(43, 108, 176, 0.2);
+  margin: 20px auto;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  width: fit-content;
+}
+
+.videoButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.videoButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(43, 108, 176, 0.3);
+  background: #2c5282;
+}
+
+.videoButton:hover::before {
+  left: 100%;
+}
+
+.videoButton:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(43, 108, 176, 0.2);
+}

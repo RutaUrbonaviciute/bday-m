@@ -18,9 +18,15 @@ export const Form = () => {
     passErr: false,
     ageErr: false,
   });
+  const [policyChecked, setPolicyChecked] = useState(false);
+  const [policyError, setPolicyError] = useState(false);
   const ainiusValidation = ["Ainius", "ainius"];
   const passValidation = ["megsturuta", "MegstuRuta", "megstuRuta"];
   const correctName = ainiusValidation.includes(name);
+  const [showPasswordHint, setShowPasswordHint] = useState(false);
+  const [showHintConfirmation, setShowHintConfirmation] = useState(false);
+  const [hintAttempts, setHintAttempts] = useState(0);
+  const maxHintAttempts = 3;
 
   const handleValidation = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,31 +48,54 @@ export const Form = () => {
 
     setError(newErrors);
 
+    if (!policyChecked) {
+      setPolicyError(true);
+      return;
+    } else {
+      setPolicyError(false);
+    }
+
     // If all validations pass, redirect to birthday page
     if (!Object.values(newErrors).some((value) => value)) {
-      router.push("/linkejimas");
+      router.push("/as-ainius");
     }
+  };
+
+  const handleForgotPassword = () => {
+    if (hintAttempts >= maxHintAttempts) {
+      setError((prev) => ({ ...prev, passErr: true }));
+      return;
+    }
+    setShowHintConfirmation(true);
+  };
+
+  const handleConfirmHint = () => {
+    setShowPasswordHint(true);
+    setShowHintConfirmation(false);
+    setHintAttempts((prev) => prev + 1);
+  };
+
+  const handleCancelHint = () => {
+    setShowHintConfirmation(false);
   };
 
   return (
     <div className={styles.login_box}>
       <h1>Prisijunk</h1>
       <div className={styles.photo_container}>
-        {correctName && age === "29" ? (
+        {!name ? (
           <Image
-            src="/hat.svg"
-            alt="hat"
-            width={80}
-            height={90}
+            src="/cake.svg"
+            alt="birthday cake"
+            width={150}
+            height={150}
             style={{
-              position: "absolute",
-              top: "-40px",
-              right: "80px",
-              transform: "rotate(40deg)",
+              width: "150px",
+              height: "150px",
+              objectFit: "contain",
             }}
           />
-        ) : null}
-        {eyeClosed ? (
+        ) : eyeClosed ? (
           <Image
             src="/closed.jpg"
             alt="eye"
@@ -171,7 +200,64 @@ export const Form = () => {
               />
             )}
           </div>
+          <button
+            type="button"
+            onClick={handleForgotPassword}
+            className={styles.forgotPassword}
+          >
+            Wtf, aš neįsivaizduoju koks slaptažodis...
+          </button>
+          {showHintConfirmation && (
+            <div className={styles.hintConfirmation}>
+              <p>
+                Ar tikrai nori užuominos? Gali būti, kad po jos bus dar
+                sunkiau...
+              </p>
+              <div className={styles.hintButtons}>
+                <button
+                  onClick={handleConfirmHint}
+                  className={styles.confirmHint}
+                >
+                  Taip, duok užuominą
+                </button>
+                <button
+                  onClick={handleCancelHint}
+                  className={styles.cancelHint}
+                >
+                  Ne, pabandysiu dar kartą
+                </button>
+              </div>
+            </div>
+          )}
+          {showPasswordHint && (
+            <div className={styles.passwordHint}>
+              <p>
+                skamba panašiai kaip Rūtos netflixo slaptažodis, tik tą daryti
+                ne netflixą, o Rūtą
+              </p>
+            </div>
+          )}
         </div>
+        <div className={styles.privacyRow}>
+          <input
+            type="checkbox"
+            id="policy"
+            checked={policyChecked}
+            onChange={() => setPolicyChecked((v) => !v)}
+          />
+          <label htmlFor="policy">
+            Sutinku su
+            <a
+              href="/ainiuso-privatumo-taisykles"
+              className={styles.policyLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Privatumo taisyklėmis
+            </a>
+          </label>
+        </div>
+        {policyError && <ErrorBox text="ei ou, nesutikai su taisyklėmis..." />}
         <button className={styles.login} type="submit">
           Norėčiau prisijungti
         </button>
@@ -187,7 +273,7 @@ export const Form = () => {
               width: "100%",
               height: "auto",
               maxWidth: "300px",
-              margin: "0 auto",
+              // margin: "0 auto",
             }}
             unoptimized
           />

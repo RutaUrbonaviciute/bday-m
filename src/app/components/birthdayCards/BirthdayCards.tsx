@@ -1,0 +1,159 @@
+import Image from "next/image";
+import styles from "./birthdayCards.module.css";
+
+interface SpecialCard {
+  id: number;
+  title: string;
+  image: string;
+  imageWidth: number;
+  imageHeight: number;
+  isFirstCard?: boolean;
+  isSlideshow?: boolean;
+  slideshowImages?: string[];
+  text: string[];
+  style?: React.CSSProperties;
+}
+
+interface BirthdayCardsProps {
+  cards: SpecialCard[];
+  currentCardIndex: number;
+  slideDirection: string;
+  momoImageIndex: number;
+  onPrevCard: () => void;
+  onNextCard: () => void;
+}
+
+export const BirthdayCards = ({
+  cards,
+  currentCardIndex,
+  slideDirection,
+  momoImageIndex,
+  onPrevCard,
+  onNextCard,
+}: BirthdayCardsProps) => {
+  return (
+    <>
+      <div
+        className={`${styles.cardWrapper} ${
+          styles[`slide${slideDirection === "right" ? "InRight" : "InLeft"}`]
+        }`}
+      >
+        <div>
+          {cards[currentCardIndex].isFirstCard ? (
+            <div className={styles.avatarWrapper}>
+              <Image
+                src={cards[currentCardIndex].image}
+                alt={cards[currentCardIndex].title}
+                width={0}
+                height={0}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className={styles.specialAvatar}
+                style={{ objectFit: "cover" }}
+                priority
+              />
+              <h3 className={styles.cardTitleFirst}>
+                sakei nenori dovanų, tai padarėm kažką rankų darbo 🧡
+              </h3>
+            </div>
+          ) : (
+            <>
+              {cards[currentCardIndex].isSlideshow ? (
+                <div className={styles.avatarWrapper}>
+                  <Image
+                    src={
+                      cards[currentCardIndex].slideshowImages?.[
+                        momoImageIndex
+                      ] || ""
+                    }
+                    alt={cards[currentCardIndex].title}
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className={styles.specialAvatar}
+                    style={{ objectFit: "cover" }}
+                    priority
+                  />
+                  <div className={styles.textContainer}>
+                    <h3
+                      className={styles.cardTitle}
+                      data-title={cards[currentCardIndex].title}
+                    >
+                      {cards[currentCardIndex].title}
+                    </h3>
+                    <div className={styles.wishBubble}>
+                      {cards[currentCardIndex].text.map((paragraph, index) => (
+                        <p key={index}>{paragraph}</p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className={styles.avatarWrapper}>
+                  <Image
+                    src={cards[currentCardIndex].image}
+                    alt={cards[currentCardIndex].title}
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className={styles.specialAvatar}
+                    style={{
+                      objectFit: "cover",
+                      ...(cards[currentCardIndex].id === 11 && {
+                        objectFit: "contain",
+                        maxWidth: "400px",
+                        maxHeight: "400px",
+                      }),
+                      ...(cards[currentCardIndex].style || {}),
+                    }}
+                    unoptimized={cards[currentCardIndex].id === 11}
+                  />
+                  <div className={styles.textContainer}>
+                    <h3
+                      className={styles.cardTitle}
+                      data-title={cards[currentCardIndex].title}
+                    >
+                      {cards[currentCardIndex].title}
+                    </h3>
+                    {cards[currentCardIndex].text.length > 0 && (
+                      <div className={styles.wishBubble}>
+                        {cards[currentCardIndex].text.map(
+                          (paragraph, index) => (
+                            <p key={index}>{paragraph}</p>
+                          )
+                        )}
+                      </div>
+                    )}
+                    {cards[currentCardIndex].title === "Liucija" && (
+                      <button
+                        className={styles.videoButton}
+                        onClick={() => window.open("/video.mp4", "_blank")}
+                      >
+                        norėčiau daugiau contento su kilimu
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+          padding: "20px",
+        }}
+      >
+        <button className={styles.navButton} onClick={onPrevCard}>
+          <span className={styles.arrowLeft}>‹</span>
+        </button>
+        <button className={styles.navButton} onClick={onNextCard}>
+          <span className={styles.arrowRight}>›</span>
+        </button>
+      </div>
+    </>
+  );
+};

@@ -1,17 +1,123 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #7cb9a3 0%, #5a8db3 100%);
+  transition: background 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.main::before {
+  content: "";
+  opacity: 0.3; /* Adjust this for transparency */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1; /* Place behind content */
+  content: "";
+  background-image: url("/aniusas.jpeg");
+  background-repeat: repeat;
+  background-size: 200px;
+  pointer-events: none;
+}
+
+.main.muTheme {
+  background: linear-gradient(135deg, #da291c, #000000);
+}
+
+.main.muTheme::before {
+  display: none;
+}
+
+.logoContainer {
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.themeButton {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.themeButton:hover {
+  background: #357abd;
+  transform: translateY(-2px);
+}
+
+.main.muTheme .themeButton {
+  background: #ffffff;
+  color: #da291c;
+  font-weight: 600;
+}
+
+.main.muTheme .themeButton:hover {
+  background: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 1rem;
+    padding-top: 100px;
+  }
+
+  .themeButton {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 0.5rem;
+    padding-top: 90px;
+  }
+
+  .themeButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
 .container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #2b6cb0, #48bb78);
-  padding: 140px 20px 20px 20px;
+  background: linear-gradient(135deg, #5a8db3, #7cb9a3);
+  padding: 80px 40px 40px 40px;
   position: relative;
   overflow: hidden;
   transition: background 0.3s ease;
+  z-index: 2;
+}
+
+.container::before {
+  display: none;
 }
 
 .container.muTheme {
   background: linear-gradient(135deg, #da291c, #000000);
+}
+
+.container.muTheme::before {
+  display: none;
 }
 
 .logo {
@@ -20,10 +126,7 @@
   left: 20px;
   width: 100px;
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  z-index: 1000;
+  z-index: 2;
 }
 
 .logo:hover {
@@ -44,7 +147,7 @@
   color: #2b6cb0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  z-index: 1000;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -61,23 +164,25 @@
 }
 
 .content {
-  background: rgba(255, 255, 255, 0.85);
   padding: 40px;
-  padding-top: 80px;
-  border-radius: 20px;
-  box-shadow: 0 15px 25px rgba(43, 108, 176, 0.2);
+  padding-top: 20px;
   text-align: center;
-  max-width: 1000px;
+  max-width: 1400px;
   width: 100%;
   min-height: 600px;
   position: relative;
   animation: fadeIn 1s ease-out;
-  backdrop-filter: blur(5px);
   transition: all 0.3s ease;
+  margin: 10px auto;
   margin-top: 40px;
+  position: relative;
+  z-index: 2;
+  background: #f5f5f5;
 }
 
 .muTheme .content {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
   box-shadow: 0 15px 25px rgba(218, 41, 28, 0.2);
 }
 
@@ -90,8 +195,8 @@
 }
 
 .muTheme .content h1 {
-  color: #da291c;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .subtitle {
@@ -102,197 +207,301 @@
 }
 
 .wishesContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.avatarWrapper {
-  position: relative;
-  cursor: pointer;
-  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.9);
+  gap: 30px;
+  margin-top: 2rem;
+  position: relative;
+  width: 100%;
+}
+
+.cardWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.muTheme .avatarWrapper {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(218, 41, 28, 0.1);
-}
-
-.avatarWrapper:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  z-index: 10;
-}
-
-.avatar {
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  width: 80px !important;
-  height: 80px !important;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
-.muTheme .avatar {
-  /* Remove border-color override since we don't have borders anymore */
+.cardWrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.avatarWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+.specialAvatar {
+  width: 100% !important;
+  max-width: 400px;
+  height: auto !important;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .wishBubble {
-  position: relative;
-  background: transparent;
-  padding: 12px;
-  border-radius: 10px;
-  min-width: unset;
-  max-width: 100%;
-  opacity: 1;
-  pointer-events: auto;
-  transition: all 0.3s ease;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .wishBubble p {
-  margin: 0;
-  color: #2b6cb0;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  font-weight: 500;
-  filter: blur(4px);
-  transition: filter 0.3s ease;
+  margin: 0 0 1em 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #4a5568;
 }
 
-.muTheme .wishBubble p {
-  color: #da291c;
+.wishBubble p:last-child {
+  margin-bottom: 0;
 }
 
-.avatarWrapper:hover .wishBubble p {
-  filter: blur(0);
+.navigationButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  margin: 20px 0;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.navButton {
+  background: #4a90e2;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Tablet and smaller desktop screens */
-@media screen and (max-width: 1024px) {
-  .content {
-    padding: 30px;
-  }
-
-  .content h1 {
-    font-size: 2.2rem;
-  }
-
-  .wishesContainer {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
-  }
+.navButton:hover {
+  background: #357abd;
+  transform: translateY(-2px);
 }
 
-/* Mobile devices */
 @media screen and (max-width: 768px) {
-  .container {
-    padding: 100px 20px 20px 20px;
-  }
-
-  .logo {
-    width: 80px;
-  }
-
-  .content {
-    padding: 20px;
-  }
-
-  .content h1 {
-    font-size: 1.8rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-    margin-bottom: 30px;
-  }
-
-  .wishesContainer {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
+  .cardWrapper {
     padding: 15px;
+    margin: 10px;
   }
 
   .avatarWrapper {
     padding: 15px;
+    gap: 15px;
   }
 
-  .avatar {
-    width: 60px !important;
-    height: 60px !important;
+  .specialAvatar {
+    max-width: 100%;
+  }
+
+  .cardTitle {
+    font-size: 1.25rem;
+  }
+
+  .wishBubble {
+    padding: 15px;
   }
 
   .wishBubble p {
-    font-size: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .navigationButtons {
+    gap: 15px;
+  }
+
+  .navButton {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .main::before {
+    background-size: 100px;
   }
 }
 
-/* Small mobile devices */
 @media screen and (max-width: 480px) {
-  .container {
-    padding: 80px 15px 15px 15px;
-  }
-
-  .logo {
-    width: 60px;
-  }
-
-  .content {
-    padding: 15px;
-  }
-
-  .content h1 {
-    font-size: 1.5rem;
-  }
-
-  .wishesContainer {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .cardWrapper {
     padding: 10px;
+    margin: 5px;
   }
 
   .avatarWrapper {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .specialAvatar {
+    max-width: 100%;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .wishBubble {
     padding: 12px;
   }
 
-  .avatar {
-    width: 50px !important;
-    height: 50px !important;
+  .wishBubble p {
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
 
-  .wishBubble p {
-    font-size: 0.8rem;
+  .navigationButtons {
+    gap: 10px;
+  }
+
+  .navButton {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .main::before {
+    background-size: 80px;
   }
 }
 
-.beerConfettiContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
+/* Remove all special styling for first card and overlay */
+.firstCardContainer {
   width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.overlayTitle {
+  display: none;
+}
+
+/* Remove all special styling for Aurimas card */
+.cardTitle[data-title="Aurimas"] {
+  white-space: normal;
+  max-width: none;
+}
+
+/* Keep MU theme styles separate */
+.muTheme .wishesContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.muTheme .cardWrapper {
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(218, 41, 28, 0.15);
+  transition: transform 0.3s ease;
   height: 100%;
-  pointer-events: none;
-  z-index: 1000;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.muTheme .cardWrapper:hover {
+  transform: translateY(-5px);
+}
+
+.muTheme .avatarWrapper {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.muTheme .avatar {
+  width: 100px !important;
+  height: 100px !important;
+  border: 3px solid #da291c;
+}
+
+.muTheme .cardTitle {
+  color: #da291c;
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 0;
+  max-width: none;
+  white-space: normal;
+  font-weight: 600;
+}
+
+.muTheme .wishBubble {
+  display: none;
+}
+
+/* MU Theme Mobile Styles */
+@media screen and (max-width: 768px) {
+  .muTheme .wishesContainer {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    padding: 10px;
+  }
+
+  .muTheme .avatarWrapper {
+    padding: 15px;
+  }
+
+  .muTheme .avatar {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .muTheme .cardTitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .muTheme .wishesContainer {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding: 5px;
+  }
+
+  .muTheme .avatar {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .muTheme .cardTitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* Remove video button styles */
+.videoButton,
+.videoButton::before,
+.videoButton:hover,
+.videoButton:hover::before,
+.videoButton:active {
+  /* Remove all these styles */
 }

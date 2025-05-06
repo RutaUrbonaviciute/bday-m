@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Cake base -->
+    <path d="M30 100H120V130C120 135.523 115.523 140 110 140H40C34.4772 140 30 135.523 30 130V100Z" fill="#2b6cb0" />
+
+    <!-- Cake top layer -->
+    <path d="M40 70H110V100H40V70Z" fill="#48bb78" />
+
+    <!-- Cake middle layer -->
+    <path d="M50 40H100V70H50V40Z" fill="#2b6cb0" />
+
+    <!-- Cake top -->
+    <path d="M60 20H90V40H60V20Z" fill="#48bb78" />
+
+    <!-- Candle 1 -->
+    <rect x="65" y="10" width="4" height="10" fill="#FFD700" />
+    <circle cx="67" cy="10" r="2" fill="#FF4500" />
+
+    <!-- Candle 2 -->
+    <rect x="75" y="10" width="4" height="10" fill="#FFD700" />
+    <circle cx="77" cy="10" r="2" fill="#FF4500" />
+
+    <!-- Candle 3 -->
+    <rect x="85" y="10" width="4" height="10" fill="#FFD700" />
+    <circle cx="87" cy="10" r="2" fill="#FF4500" />
+
+    <!-- Frosting decorations -->
+    <path
+        d="M35 100C35 100 40 95 45 100C50 105 55 95 60 100C65 105 70 95 75 100C80 105 85 95 90 100C95 105 100 95 105 100C110 105 115 95 120 100"
+        stroke="#ffffff" stroke-width="2" fill="none" />
+
+    <!-- Middle layer frosting -->
+    <path d="M45 70C45 70 50 65 55 70C60 75 65 65 70 70C75 75 80 65 85 70C90 75 95 65 100 70" stroke="#ffffff"
+        stroke-width="2" fill="none" />
+
+    <!-- Bottom layer frosting -->
+    <path
+        d="M35 130C35 130 40 125 45 130C50 135 55 125 60 130C65 135 70 125 75 130C80 135 85 125 90 130C95 135 100 125 105 130C110 135 115 125 120 130"
+        stroke="#ffffff" stroke-width="2" fill="none" />
+
+    <!-- Sprinkles -->
+    <circle cx="45" cy="85" r="2" fill="#FFD700" />
+    <circle cx="65" cy="95" r="2" fill="#FFD700" />
+    <circle cx="85" cy="85" r="2" fill="#FFD700" />
+    <circle cx="55" cy="55" r="2" fill="#FFD700" />
+    <circle cx="75" cy="55" r="2" fill="#FFD700" />
+    <circle cx="95" cy="55" r="2" fill="#FFD700" />
+</svg>
