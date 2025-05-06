@@ -172,6 +172,9 @@
     justify-content: flex-end;
   }
 
+  .cardTitle[data-title="Aurimas"] {
+    word-break: break-all;
+  }
   .wishBubble {
     padding: 1.5rem;
   }
@@ -262,7 +265,7 @@
 @media (min-width: 769px) {
   .avatarWrapper {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     gap: 2rem;
   }
 

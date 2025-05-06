@@ -61,6 +61,7 @@ export default function AsAinius() {
           controls
           className={styles.video}
           autoPlay
+          playsInline
           loop
           muted
         />

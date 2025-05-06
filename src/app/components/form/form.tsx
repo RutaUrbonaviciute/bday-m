@@ -20,8 +20,16 @@ export const Form = () => {
   });
   const [policyChecked, setPolicyChecked] = useState(false);
   const [policyError, setPolicyError] = useState(false);
-  const ainiusValidation = ["Ainius", "ainius"];
-  const passValidation = ["megsturuta", "MegstuRuta", "megstuRuta"];
+  const ainiusValidation = ["Ainius", "ainius", "Ainiusas", "AINIUS"];
+  const passValidation = [
+    "megsturuta",
+    "MegstuRuta",
+    "megstuRuta",
+    "myliuRuta",
+    "MyliuRuta",
+    "myliuRuta",
+    "MyliuRuta",
+  ];
   const correctName = ainiusValidation.includes(name);
   const [showPasswordHint, setShowPasswordHint] = useState(false);
   const [showHintConfirmation, setShowHintConfirmation] = useState(false);

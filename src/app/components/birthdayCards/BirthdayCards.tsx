@@ -118,7 +118,17 @@ export const BirthdayCards = ({
                       <div className={styles.wishBubble}>
                         {cards[currentCardIndex].text.map(
                           (paragraph, index) => (
-                            <p key={index}>{paragraph}</p>
+                            <p
+                              key={index}
+                              style={{
+                                wordBreak:
+                                  cards[currentCardIndex].id === 2
+                                    ? "break-all"
+                                    : "normal",
+                              }}
+                            >
+                              {paragraph}
+                            </p>
                           )
                         )}
                       </div>
@@ -145,6 +155,7 @@ export const BirthdayCards = ({
           justifyContent: "center",
           gap: "10px",
           padding: "20px",
+          marginBottom: "20px",
         }}
       >
         <button className={styles.navButton} onClick={onPrevCard}>

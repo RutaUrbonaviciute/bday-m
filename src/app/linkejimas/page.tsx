@@ -106,7 +106,7 @@ const specialCards: SpecialCard[] = [
     image: "/aurimas.jpeg",
     imageWidth: 0,
     imageHeight: 0,
-    text: ["U3UgR2ltdGFkaWVuaXUhIFNrYW5hd XMgZ2ltdGFkaWVuaW5pbyBhbGF1cyA8Mw=="],
+    text: ["U3UgR2ltdGFkaWVuaXUhIFNrYW5hdXMgZ2ltdGFkaWVuaW5pbyBhbGF1cyA8Mw=="],
   },
   {
     id: 3,
@@ -235,6 +235,10 @@ export default function Linkejimas() {
   }, []);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentCardIndex]);
+
+  useEffect(() => {
     if (showConfetti) {
       const timer = setTimeout(() => {
         setShowConfetti(false);
@@ -278,19 +282,21 @@ export default function Linkejimas() {
 
   return (
     <main className={`${styles.main} ${isMuTheme ? styles.muTheme : ""}`}>
-      <div className={styles.logoContainer}>
-        <Image
-          src={isMuTheme ? "/muu.webp" : "/ainiusas.png"}
-          alt={isMuTheme ? "Manchester United Logo" : "Logo"}
-          width={150}
-          height={150}
-          className={styles.logo}
-        />
-      </div>
+      <div className={styles.header}>
+        <div className={styles.logoContainer}>
+          <Image
+            src={isMuTheme ? "/muu.webp" : "/ainiusas.png"}
+            alt={isMuTheme ? "Manchester United Logo" : "Logo"}
+            width={150}
+            height={150}
+            className={styles.logo}
+          />
+        </div>
 
-      <button onClick={handleThemeChange} className={styles.themeButton}>
-        Norėčiau pakeisti temą
-      </button>
+        <button onClick={handleThemeChange} className={styles.themeButton}>
+          Norėčiau pakeisti temą
+        </button>
+      </div>
 
       {showConfetti && (
         <>
