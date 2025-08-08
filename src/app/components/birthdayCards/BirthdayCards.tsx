@@ -8,7 +8,6 @@ interface SpecialCard {
   image: string;
   imageWidth: number;
   imageHeight: number;
-  isFirstCard?: boolean;
   isSlideshow?: boolean;
   slideshowImages?: string[];
   text: string[];
@@ -32,8 +31,7 @@ export const BirthdayCards = ({
 }: BirthdayCardsProps) => {
   const [videoLoading, setVideoLoading] = useState<{ [key: number]: boolean }>({});
   const [videoError, setVideoError] = useState<{ [key: number]: boolean }>({});
-  const [imageLoading, setImageLoading] = useState<{ [key: number]: boolean }>({});
-  const [cardVisible, setCardVisible] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState<{ [key: number]: boolean }>({});
   
   // Preload next and previous images for better performance
   const nextIndex = (currentCardIndex + 1) % cards.length;
@@ -58,18 +56,11 @@ export const BirthdayCards = ({
     });
   }, [cards]);
 
-  // Reset card visibility when card changes
+  // Reset image loading when card changes
   useEffect(() => {
-    setCardVisible(false);
-    setImageLoading(prev => ({ ...prev, [currentCardIndex]: true }));
-    
-    // Trigger fade-in animation after a short delay
-    const timer = setTimeout(() => {
-      setCardVisible(true);
-    }, 100);
-    
-    return () => clearTimeout(timer);
+    setImageLoaded(prev => ({ ...prev, [currentCardIndex]: false }));
   }, [currentCardIndex]);
+
   
   return (
     <>
@@ -83,39 +74,11 @@ export const BirthdayCards = ({
       <div
         className={`${styles.cardWrapper} ${
           styles[`slide${slideDirection === "right" ? "InRight" : "InLeft"}`]
-        } ${cardVisible ? styles.cardVisible : styles.cardHidden}`}
+        }`}
       >
         <div>
-          {cards[currentCardIndex].isFirstCard ? (
-            <div className={styles.avatarWrapper}>
-              {imageLoading[currentCardIndex] && (
-                <div className={styles.imageLoader}>
-                  <div className={styles.spinner}></div>
-                  <p>Loading image...</p>
-                </div>
-              )}
-              <Image
-                src={cards[currentCardIndex].image}
-                alt={cards[currentCardIndex].title}
-                width={600}
-                height={600}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                className={`${styles.specialAvatar} ${imageLoading[currentCardIndex] ? styles.imageLoading : styles.imageLoaded}`}
-                style={{ objectFit: "cover" }}
-                priority
-                loading="eager"
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                onLoad={() => setImageLoading(prev => ({ ...prev, [currentCardIndex]: false }))}
-              />
-              <h3 className={styles.cardTitleFirst}>
-                sakei nenori dovanų, tai padarėm kažką rankų darbo 💖
-              </h3>
-            </div>
-          ) : (
-            <>
-              {cards[currentCardIndex].isSlideshow ? (
-                <div className={styles.avatarWrapper}>
+          {cards[currentCardIndex].isSlideshow ? (
+                <div className={styles.avatarWrapper} key={`video-${currentCardIndex}-${cards[currentCardIndex].id}`}>
                   {videoLoading[currentCardIndex] && (
                     <div className={styles.videoLoader}>
                       <div className={styles.spinner}></div>
@@ -128,6 +91,7 @@ export const BirthdayCards = ({
                     </div>
                   )}
                   <video
+                    key={`vid-${currentCardIndex}-${cards[currentCardIndex].id}`}
                     src={cards[currentCardIndex].image}
                     autoPlay
                     muted
@@ -159,20 +123,15 @@ export const BirthdayCards = ({
                   </div>
                 </div>
               ) : (
-                <div className={styles.avatarWrapper}>
-                  {imageLoading[currentCardIndex] && (
-                    <div className={styles.imageLoader}>
-                      <div className={styles.spinner}></div>
-                      <p>Loading image...</p>
-                    </div>
-                  )}
+                <div className={styles.avatarWrapper} key={`image-${currentCardIndex}-${cards[currentCardIndex].id}`}>
                   <Image
+                    key={`img-${currentCardIndex}-${cards[currentCardIndex].id}`}
                     src={cards[currentCardIndex].image}
                     alt={cards[currentCardIndex].title}
                     width={600}
                     height={600}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                    className={`${styles.specialAvatar} ${imageLoading[currentCardIndex] ? styles.imageLoading : styles.imageLoaded}`}
+                    className={`${styles.specialAvatar} ${imageLoaded[currentCardIndex] ? styles.imageLoaded : ''}`}
                     style={{
                       objectFit: "cover",
                     }}
@@ -180,7 +139,11 @@ export const BirthdayCards = ({
                     placeholder="blur"
                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                     unoptimized={cards[currentCardIndex].id === 11}
-                    onLoad={() => setImageLoading(prev => ({ ...prev, [currentCardIndex]: false }))}
+                    onLoad={() => {
+                      setTimeout(() => {
+                        setImageLoaded(prev => ({ ...prev, [currentCardIndex]: true }));
+                      }, 200);
+                    }}
                   />
                   <div className={styles.textContainer}>
                     <h3
@@ -211,8 +174,6 @@ export const BirthdayCards = ({
                   </div>
                 </div>
               )}
-            </>
-          )}
         </div>
       </div>
 

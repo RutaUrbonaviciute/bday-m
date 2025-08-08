@@ -88,17 +88,7 @@ const specialCards: SpecialCard[] = [
     ],
   },
   {
-    id: 7,
-    title: "Laurynas",
-    image: "/laurynas.png",
-    imageWidth: 0,
-    imageHeight: 0,
-    text: [
-      "Martyna, smagu, kad tapai neatsiejama chebros dalis. Linkiu pavaryt darbe ir gyvenime. Tavo metai 💪 HB"
-    ],
-  },
-  {
-    id: 7,
+    id: 8,
     title: "Ruta",
     image: "/ruta.mp4",
     isSlideshow: true,
@@ -106,6 +96,16 @@ const specialCards: SpecialCard[] = [
     imageHeight: 0,
     text: [
       "Brangioji, gražiausio gimtadienio ir amazing ateinančių metelių, kad niekad netrūktų gerų prikių ir juoko. Kaip kilo alumni galiu pridurti - kad tu tikrai never kill the vibe :D o tik pridedi chebrytei 1000 vaibo <3"
+    ],
+  },
+  {
+    id: 9,
+    title: "Laurynas",
+    image: "/laurynas.png",
+    imageWidth: 0,
+    imageHeight: 0,
+    text: [
+      "Martyna, smagu, kad tapai neatsiejama chebros dalis. Linkiu pavaryt darbe ir gyvenime. Tavo metai 💪 HB"
     ],
   },
   {
