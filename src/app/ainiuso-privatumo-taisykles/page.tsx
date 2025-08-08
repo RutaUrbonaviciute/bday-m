@@ -9,7 +9,9 @@ export default function AiniusioPrivatumoTaisykles() {
       style={{
         minHeight: "100vh",
         width: "100vw",
-        background: "#f0f4f8",
+        background: "linear-gradient(-45deg, #FFC3CC, #D2DB76, #E8F086, #FFC3CC)",
+        backgroundSize: "400% 400%",
+        animation: "gradientMove 8s ease infinite",
         position: "relative",
       }}
     >
@@ -31,7 +33,7 @@ export default function AiniusioPrivatumoTaisykles() {
           left: 32px;
           z-index: 10;
           display: inline-block;
-          background: linear-gradient(135deg, #2b6cb0 60%, #48bb78 100%);
+          background: linear-gradient(135deg, #9CAD8C 60%, #F1C8CB 100%);
           color: #fff;
           border: none;
           border-radius: 8px;
@@ -39,11 +41,11 @@ export default function AiniusioPrivatumoTaisykles() {
           font-size: 1rem;
           font-weight: 600;
           cursor: pointer;
-          box-shadow: 0 2px 8px rgba(43, 108, 176, 0.10);
+          box-shadow: 0 2px 8px rgba(156, 173, 140, 0.10);
           transition: background 0.2s, transform 0.2s;
         }
         .back-btn-theme:hover {
-          background: linear-gradient(135deg, #48bb78 60%, #2b6cb0 100%);
+          background: linear-gradient(135deg, #F1C8CB 60%, #F6B0BB 100%);
           transform: translateY(-2px) scale(1.03);
         }
       `}</style>
@@ -68,31 +70,31 @@ export default function AiniusioPrivatumoTaisykles() {
             width: "100%",
             background: "white",
             borderRadius: 18,
-            boxShadow: "0 8px 32px rgba(43, 108, 176, 0.18)",
+            boxShadow: "0 8px 32px rgba(156, 173, 140, 0.18)",
             padding: "48px 32px",
-            fontFamily: "Inter, sans-serif",
-            color: "#2b6cb0",
+            fontFamily: "Karla, sans-serif",
+            color: "#7E8C69",
             textAlign: "left",
             boxSizing: "border-box",
           }}
         >
           <div className="ainius-privacy-container">
-            <h1 style={{ color: "#2b6cb0", marginBottom: 10 }}>
-              Ainiaus Privatumo Taisyklės
+            <h1 style={{ color: "#7E8C69", marginBottom: 10 }}>
+              Martynos Privatumo Taisyklės
             </h1>
             <h2
               style={{
-                color: "#48bb78",
+                color: "#9CAD8C",
                 fontWeight: 500,
                 fontSize: "1.18rem",
                 marginBottom: 18,
               }}
             >
-              Aš, kurio yra gimtadienis, sutinku:
+              Aš, kurios yra gimtadienis, sutinku:
             </h2>
             <ul
               style={{
-                color: "#2266a3",
+                color: "#7E8C69",
                 fontSize: "1.08rem",
                 marginBottom: 18,
                 paddingLeft: 24,
@@ -123,17 +125,16 @@ export default function AiniusioPrivatumoTaisykles() {
                 Sutinku, kad Rūta yra stipri muay thai preišininkė
               </li>
               <li style={{ marginBottom: 8 }}>
-                Sutinku, kad esu labai gražus ir raumeningas
+                Sutinku, kad esu labai graži ir elegantška
               </li>
               <li style={{ marginBottom: 8 }}>
                 Sutinku, kad Rūta mane mėgsta labiau
               </li>
               <li style={{ marginBottom: 8 }}>
-                Sutinku, kad aš, Ainius Kraynas - esu belekaip geras
-                programuotojas, amazing pažnekovas, rūpestingas vaikinas, labai
-                gerai juokauju, dainuoju, climbinu, šaudau į galvą irgi gerai
-                (čia per cs), gerai stalo tenisą lošiu, gaminu skaniai... Viską
-                darysiu ir toliau ir būsiu toks, nes esu BEST🎈🎂
+                Sutinku, kad aš, Martyna - esu belekaip gera
+                programuotoja, amazing pašnekovė, rūpestinga mergina, labai
+                gerai juokauju, dainuoju, šokiu, gerai žaidžiu žaidimus, 
+                gaminu skaniai... Viską darysiu ir toliau ir būsiu tokia, nes esu BEST🎈🎂
               </li>
             </ul>
           </div>

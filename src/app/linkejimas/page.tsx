@@ -1,9 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import ReactConfetti from "react-confetti";
-import { BeerConfetti } from "../components/beerConfetti/BeerConfetti";
-import { MuCards } from "../components/muCards/MuCards";
 import { BirthdayCards } from "../components/birthdayCards/BirthdayCards";
 import styles from "./linkejimas.module.css";
 
@@ -20,192 +18,107 @@ interface SpecialCard {
   style?: React.CSSProperties;
 }
 
-interface MuWish {
-  player: string;
-  wish: string;
-}
-
-// Manchester United themed wishes
-const muWishes: MuWish[] = [
-  {
-    player: "Marcus Rashford",
-    wish: "Oi mate! Proper buzzing to wish a top Red dev his 29th! Keep coding and supporting United like you score at CS - pure class! 🎯",
-  },
-  {
-    player: "Bruno Fernandes",
-    wish: "Ayy bruv! 29 years of pure passion, just like your love for United! Keep smashing it like you smash those League of Legends games! SIUUUU! 🎮",
-  },
-  {
-    player: "Rasmus Højlund",
-    wish: "Bloody brilliant birthday to our Danish striker's biggest fan! Let's celebrate with a cold one after you ace that deployment, innit! 🍺",
-  },
-  {
-    player: "Alejandro Garnacho",
-    wish: "Mad skills in the code game bruv! 29 looking proper mint! Keep vibing with United and crushing it in CS:GO like a worldie! 🚀",
-  },
-  {
-    player: "Mason Mount",
-    wish: "Happy birthday fella! You're as reliable as your git commits! Proper United fan and a beast at League, respect mate! ⚽",
-  },
-  {
-    player: "Casemiro",
-    wish: "Oi oi! 'Ave a proper birthday lad! Controlling the midfield like you control that keyboard! Time for a victory beer, innit! 🍺",
-  },
-  {
-    player: "Luke Shaw",
-    wish: "Alright mate! 29 years young and still defending United's honor! Bet you're as solid in Counter Strike as our back four! 🛡️",
-  },
-  {
-    player: "Lisandro Martínez",
-    wish: "The Butcher 'ere says happy birthday! You slice through code like I slice through attacks! Proper gaming and United mad lad! 🔪",
-  },
-  {
-    player: "André Onana",
-    wish: "Safe bruv! Your code's as clean as my sheets! Keep catching them bugs and supporting United! Time for a birthday beer! 🧤",
-  },
-  {
-    player: "Erik ten Hag",
-    wish: "Right then! Time for some tactical birthday celebrations! Code like you train, game like you mean it, support United like you live it! 📋",
-  },
-  {
-    player: "Ruben Amorim",
-    wish: "Olá mate! As your new gaffer, I can see you've got the United DNA - passion for the code, gaming, and a proper pint! Here's to bringing back the glory days together! GGMU! 🔴",
-  },
-];
-
-// Add this before specialCards array
-const momoImages = Array.from({ length: 10 }, (_, i) => `/momo/${i + 1}.jpeg`);
 
 const specialCards: SpecialCard[] = [
   {
-    id: 0,
-    title: "GIMTADIENAINIUS",
-    image: "/chebra.jpeg",
-    imageWidth: 0,
-    imageHeight: 0,
-    isFirstCard: true,
-    text: [
-      "Su gimtadieniu, Ainiusai! 🎉",
-      "Linkiu tau begalės laimės, džiaugsmo ir šypsenų! Tegul šie metai būna pilni nuotykių ir naujų iššūkių! 🌟",
-      "Tau - begalės sėkmės ir meilės! ❤️",
-    ],
-  },
-  {
     id: 1,
-    title: "Žygintas",
-    image: "/zzygis.jpg",
+    title: "Goda",
+    image: "/godukas.png",
     imageWidth: 0,
     imageHeight: 0,
-    text: [
-      "Su gimtadieniu, sugulove. Linkiu, kad ateinantys metai turėtų daug sėkmingų statymų su 257 koeficientu, kad LoL pakiltum virš D4, kad CS pakiltum iki Supreme Master (no fking clue, koks tavo rank&apos;as šiaip), kad pradėtum lengvai lipti į šešetukus, kad su Arnu uždirbtumėt milijonus, kad Rūta ir toliau būtų kantri tavo knarkimams. Ir visų svarbiausia, linkiu daugiau patekti pas mane į psichopatus sąrašus (bet kad tai įvyktų, turėsim daugiau susitikt 😊). Myl ❤️",
-    ],
+    text: ["Martyna, nuosirdus sveikinimai"],
   },
   {
     id: 2,
-    title: "Aurimas",
-    image: "/aurimas.jpeg",
+    title: "Ieva",
+    image: "/ieva.mp4",
     imageWidth: 0,
     imageHeight: 0,
-    text: ["U3UgR2ltdGFkaWVuaXUhIFNrYW5hdXMgZ2ltdGFkaWVuaW5pbyBhbGF1cyA8Mw=="],
-  },
-  {
-    id: 3,
-    title: "Justė",
-    image: "/juste.jpeg",
-    imageWidth: 0,
-    imageHeight: 0,
+    isSlideshow: true,
     text: [
-      `Ainiau, linkiu, kad visuomet turėtum draugų, su kuriais galėtum "iškelti ranką"; ir būtum suprastas 😊😊😊`,
+      "Martynai linkiu gyvent, gert (bet ne per daug) ir jaust malonumą ❤️",
     ],
   },
   {
+    id: 3,
+    title: "Jovile",
+    image: "/jovile-2.png",
+    imageWidth: 0,
+    imageHeight: 0,
+    text: ["Kad visad būtų ką pakelt ir su kuo pakelt! Būk laiminga! 🍾"],
+  },
+  {
     id: 4,
-    title: "Simonas",
-    image: "/simas.jpeg",
+    title: "Aiste",
+    image: "/aiste.png",
     imageWidth: 0,
     imageHeight: 0,
     text: [
-      "šimto prisitraukimų, tūkstančio atsispaudimų, milijono laimės",
-      "Drambliai pavydi tavo didelės širdies - niekad nepamesk šito! ❤️",
+      "esi nuostabus žmogeliukas, kupinas šilumos ir meilės visiems💛. Svajok, mėgaukis gyvenimu ir tegul taure šampano būna visada pilna! 💛",
     ],
   },
   {
     id: 5,
-    title: "Viktorija",
-    image: "/vika.jpeg",
+    title: "Egle",
+    image: "/egle.png",
     imageWidth: 0,
     imageHeight: 0,
-    text: ["CC000817681LT"],
+    text: ["gyvent smagiai, pinigų gerai"],
   },
   {
     id: 6,
-    title: "Momo",
-    image: momoImages[0],
+    title: "Povilas",
+    image: "/povilas.png",
     imageWidth: 0,
     imageHeight: 0,
-    isSlideshow: true,
-    slideshowImages: momoImages,
     text: [
-      "Ainiuxai! Su gimtadieniu sveikinu tave!",
-      "Ačiū, kad esi geriausias plaukimo mokytojas ir puikus kelionių draugas. 💖",
-      "Neačiū, kad vis dar esi labiausiai mane išgąsdinęs žmogus iš visų visų, kas yra gąsdinę 😔",
-      "Linkiu tau daug daug meilės, kad pagaliau turėtum gyvūniuką beždžioniuką, kad niekad nesibaigtų chickenraisai ir changai, kad visada lėktuvuose būtų patogu miegoti ir kad nepamestum savo kaip kelionių influencerio kelio, nes sekėjams jau trūksta kontento!",
-      "Ilgiausių metų ir činčin! 🍻✨",
+      "Miela Martyna, Mylima, maloni, miela, madinga,",
+      "Mes linkim magiškų momentų, milžiniškos motyvacijos, margaspalvių minčių, malonių malonumų,",
+      "Meilės, malonės, muzikos.",
+      "Mėgaukis malonia misija – mylėti gyvenimą!",
     ],
   },
   {
     id: 7,
-    title: "Robke",
-    image: "/robke.jpeg",
+    title: "Beatrice",
+    image: "/beatrice.png",
     imageWidth: 0,
     imageHeight: 0,
     text: [
-      "Ainiau,",
-      `Ofisiukas be tavęs – kaip kava be kofeino: kažkas vyksta, bet jau nebe tas. Kiekviena diena su tavim ten buvo kaip netikėtas bonusas – truputį darbo, daug juoko ir labai daug "nu, dar po vieną poolą".`,
-      "Smagu, kad iš visų užduočių kalnų išlindo draugas, su kuriuo galima ir sudėlioti mintis, ir pasiųsti visas mintis po velniop. Tokių žmonių nedaug – o dar mažiau tokių, kurie net ir po ofiso lieka gyvenime.",
-      "Nežinau, ar čia gimtadienio sveikinimas, ar tiesiog gera proga pasakyti – smagu, kad esi. Ir gerai, kad esi būtent toks koks esi. Nereikia nei tobulinimų, nei updeitų!",
+    "Su gimtadieniu, brangioji! Nuo pat pirmos akimirkos jausmas buvo toks, lyg būtume pažįstamos visą gyvenimą. Tu esi žmogus, su kuriuo gera būti tiesiog savimi. Linkiu tau daug džiaugsmo, šviesos ir meilės – tiek, kiek pati jos dalini kitiems. Ačiū, kad esi. ❤️"
     ],
   },
   {
-    id: 8,
-    title: "Tomas",
-    image: "/tomas.jpeg",
+    id: 7,
+    title: "Laurynas",
+    image: "/laurynas.png",
     imageWidth: 0,
     imageHeight: 0,
     text: [
-      "Sveikinimai Tortadienainiaus proga!",
-      "Linkiu, kad kiekviena diena būtų kaip šventė – su šypsena, nuotykiais ir gera muzika fone (taip, Linkin Park vis dar skamba galvoje pagalvojus apie Tave :D).",
-      `Tvirtų, sveikų santykių, daug kelionių ten, kur dar nesi buvęs, ir neprarasti to "chill" nusiteikimo, kuris Tave išskiria iš kitų. Tegul Tave visada lydi kolegos-draugai – kaip pats sakei, tada ir dirbti nebereikia.`,
-      "Gražios šventės ir dar gražesnių metų!",
+      "Martyna, smagu, kad tapai neatsiejama chebros dalis. Linkiu pavaryt darbe ir gyvenime. Tavo metai 💪 HB"
     ],
   },
   {
-    id: 9,
-    title: "Liucija",
-    image: "/kilimainius.jpg",
+    id: 7,
+    title: "Ruta",
+    image: "/ruta.mp4",
+    isSlideshow: true,
     imageWidth: 0,
     imageHeight: 0,
-    text: ["Stay sexy, Gargždų Bieberi ❤️"],
+    text: [
+      "Brangioji, gražiausio gimtadienio ir amazing ateinančių metelių, kad niekad netrūktų gerų prikių ir juoko. Kaip kilo alumni galiu pridurti - kad tu tikrai never kill the vibe :D o tik pridedi chebrytei 1000 vaibo <3"
+    ],
   },
   {
-    id: 10,
-    title: "Valdas",
-    image: "/valdelio.jpg",
+    id: 0,
+    title: "Alcengeriai",
+    image: "/martyna.mp4",
     imageWidth: 0,
     imageHeight: 0,
-    text: ["linkiu niekad fpl'o nelaimet 🙂 Ainius GAYYYYY"],
-  },
-  {
-    id: 11,
-    title: "Rūta",
-    image: "/sully.gif",
-    imageWidth: 0,
-    imageHeight: 0,
-    text: ["aš tave labiau 🫰"],
-    style: {
-      borderRadius: "20px",
-      overflow: "hidden",
-    },
+    isSlideshow: true,
+    text: [
+      "Linkim ne gyvenimo, o kutenimo",
+    ],
   },
 ];
 
@@ -215,12 +128,10 @@ export default function Linkejimas() {
     height: typeof window !== "undefined" ? window.innerHeight : 0,
   });
   const [showConfetti, setShowConfetti] = useState(false);
-  const [isMuTheme, setIsMuTheme] = useState(false);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState<"left" | "right">(
     "right"
   );
-  const [slideshowIndex, setSlideshowIndex] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -247,20 +158,6 @@ export default function Linkejimas() {
     }
   }, [showConfetti]);
 
-  useEffect(() => {
-    if (specialCards[currentCardIndex]?.isSlideshow) {
-      const interval = setInterval(() => {
-        setSlideshowIndex((prev) =>
-          prev ===
-          (specialCards[currentCardIndex].slideshowImages?.length || 1) - 1
-            ? 0
-            : prev + 1
-        );
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [currentCardIndex, specialCards]);
-
   const nextCard = () => {
     setSlideDirection("right");
     setCurrentCardIndex((prev) =>
@@ -275,32 +172,20 @@ export default function Linkejimas() {
     );
   };
 
-  const handleThemeChange = () => {
-    setIsMuTheme(!isMuTheme);
-    setShowConfetti(true);
-  };
-
   return (
-    <main className={`${styles.main} ${isMuTheme ? styles.muTheme : ""}`}>
+    <main className={`${styles.main}`}>
       <div className={styles.header}>
         <div className={styles.logoContainer}>
           <Image
-            src={isMuTheme ? "/muu.webp" : "/ainiusas.png"}
-            alt={isMuTheme ? "Manchester United Logo" : "Logo"}
+            src={"/logo.png"}
+            alt={"Logo"}
             width={150}
             height={150}
             className={styles.logo}
           />
         </div>
-
-        <button onClick={handleThemeChange} className={styles.themeButton}>
-          Norėčiau pakeisti temą
-        </button>
       </div>
-
-      {showConfetti && (
         <>
-          {!isMuTheme && (
             <ReactConfetti
               width={windowSize.width}
               height={windowSize.height}
@@ -308,35 +193,27 @@ export default function Linkejimas() {
               numberOfPieces={200}
               gravity={0.2}
               colors={[
-                "#FFD700", // Gold
-                "#FF69B4", // Hot Pink
-                "#00CED1", // Turquoise
-                "#FF6B6B", // Coral
-                "#98FB98", // Pale Green
-                "#DDA0DD", // Plum
-                "#87CEEB", // Sky Blue
-                "#FFA500", // Orange
-                "#9370DB", // Medium Purple
-                "#FF1493", // Deep Pink
+                "#FFC3CC", // Soft Pink
+                "#D2DB76", // Lime Green
+                "#28301C", // Dark Green
+                "#FFC3CC", // Soft Pink
+                "#D2DB76", // Lime Green
+                "#ffffff", // White
+                "#FFC3CC", // Soft Pink
+                "#D2DB76", // Lime Green
+                "#28301C", // Dark Green
+                "#FFC3CC", // Soft Pink
               ]}
             />
-          )}
-          {isMuTheme && <BeerConfetti />}
         </>
-      )}
-
-      {isMuTheme ? (
-        <MuCards wishes={muWishes} />
-      ) : (
-        <BirthdayCards
-          cards={specialCards}
-          currentCardIndex={currentCardIndex}
-          slideDirection={slideDirection}
-          momoImageIndex={slideshowIndex}
-          onNextCard={nextCard}
-          onPrevCard={prevCard}
-        />
-      )}
+    
+      <BirthdayCards
+        cards={specialCards}
+        currentCardIndex={currentCardIndex}
+        slideDirection={slideDirection}
+        onNextCard={nextCard}
+        onPrevCard={prevCard}
+      />
     </main>
   );
 }

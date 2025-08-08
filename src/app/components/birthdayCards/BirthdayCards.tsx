@@ -18,7 +18,6 @@ interface BirthdayCardsProps {
   cards: SpecialCard[];
   currentCardIndex: number;
   slideDirection: string;
-  momoImageIndex: number;
   onPrevCard: () => void;
   onNextCard: () => void;
 }
@@ -27,7 +26,6 @@ export const BirthdayCards = ({
   cards,
   currentCardIndex,
   slideDirection,
-  momoImageIndex,
   onPrevCard,
   onNextCard,
 }: BirthdayCardsProps) => {
@@ -52,27 +50,14 @@ export const BirthdayCards = ({
                 priority
               />
               <h3 className={styles.cardTitleFirst}>
-                sakei nenori dovanų, tai padarėm kažką rankų darbo 🧡
+                sakei nenori dovanų, tai padarėm kažką rankų darbo 💖
               </h3>
             </div>
           ) : (
             <>
               {cards[currentCardIndex].isSlideshow ? (
                 <div className={styles.avatarWrapper}>
-                  <Image
-                    src={
-                      cards[currentCardIndex].slideshowImages?.[
-                        momoImageIndex
-                      ] || ""
-                    }
-                    alt={cards[currentCardIndex].title}
-                    width={0}
-                    height={0}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className={styles.specialAvatar}
-                    style={{ objectFit: "cover" }}
-                    priority
-                  />
+                  <video src={cards[currentCardIndex].image} autoPlay muted loop  style={{maxWidth: "500px", width: "100%"}}/>
                   <div className={styles.textContainer}>
                     <h3
                       className={styles.cardTitle}
@@ -132,14 +117,6 @@ export const BirthdayCards = ({
                           )
                         )}
                       </div>
-                    )}
-                    {cards[currentCardIndex].title === "Liucija" && (
-                      <button
-                        className={styles.videoButton}
-                        onClick={() => window.open("/video.mp4", "_blank")}
-                      >
-                        norėčiau daugiau contento su kilimu
-                      </button>
                     )}
                   </div>
                 </div>

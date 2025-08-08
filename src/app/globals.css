@@ -1,16 +1,65 @@
-@import url("https://fonts.googleapis.com/css2?family=Delius&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@-webkit-keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+body {
+  background: linear-gradient(-45deg, #FFC3CC, #F6E1C3, #DCE59C, #FFC3CC, #A9B464);
+  /* background: linear-gradient(-45deg, #FFC3CC, #D2DB76, #A9B464, #E8F086, #FFC3CC); */
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+  font-family: "Karla", sans-serif;
+}
 
 :root {
-  --background: #f0f4f8;
-  --foreground: #171717;
-  --primary-color: #2b6cb0;
-  --secondary-color: #48bb78;
+  --background: #FFC3CC;
+  --foreground: #2d4a22;
+  --primary-color: #2d4a22;
+  --secondary-color: #D2DB76;
+  --accent-color: #FFC3CC;
+  --dark-green: #2d4a22;
+  --lime-green: #D2DB76;
+  --soft-pink: #FFC3CC;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #fdfaf6;
+    --background: #FFC3CC;
+    --foreground: #2d4a22;
   }
 }
 
@@ -20,14 +69,17 @@ body {
   overflow-x: hidden;
 }
 
+
 body {
   color: var(--foreground);
-  background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
-  font-family: "Inter";
+  /* background: linear-gradient(-45deg, #FFC3CC, #D2DB76, #E8F086, #FFC3CC, #D2DB76);
+  background-size: 400% 400%;
+  -webkit-animation: gradientMove 4s ease infinite, testPulse 2s ease infinite;
+  animation: gradientMove 4s ease infinite, testPulse 2s ease infinite; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
-  position: relative;
+  /* min-height: 100vh;
+  position: relative; */
 }
 
 body::before {
@@ -47,6 +99,14 @@ body::before {
   margin: 0;
 }
 
+#__next {
+  background: transparent !important;
+}
+
+[data-nextjs-scroll-focus-boundary] {
+  background: transparent !important;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -54,6 +114,6 @@ a {
 
 @media (prefers-color-scheme: dark) {
   html {
-    color-scheme: dark;
+    color-scheme: light;
   }
 }

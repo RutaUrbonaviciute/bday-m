@@ -11,26 +11,21 @@ export const Form = () => {
   const [name, setName] = useState<string>("");
   const [age, setAge] = useState<string>("");
   const [pass, setPass] = useState<string>("");
-  const [ruta, setRuta] = useState<string>("");
   const [err, setError] = useState({
     nameErr: false,
-    rutaErr: false,
     passErr: false,
     ageErr: false,
   });
   const [policyChecked, setPolicyChecked] = useState(false);
   const [policyError, setPolicyError] = useState(false);
-  const ainiusValidation = ["Ainius", "ainius", "Ainiusas", "AINIUS"];
+  const martynaValidation = ["Martyna", "martyna", "Martynka", "MARTYNA", "Martynka", "martynka"];
   const passValidation = [
-    "megsturuta",
-    "MegstuRuta",
-    "megstuRuta",
-    "myliuRuta",
-    "MyliuRuta",
-    "myliuRuta",
-    "MyliuRuta",
+"kuba",
+"kubyte",
+"Kuba",
+"Kubyte"
   ];
-  const correctName = ainiusValidation.includes(name);
+  const correctName = martynaValidation.includes(name);
   const [showPasswordHint, setShowPasswordHint] = useState(false);
   const [showHintConfirmation, setShowHintConfirmation] = useState(false);
   const [hintAttempts, setHintAttempts] = useState(0);
@@ -43,15 +38,6 @@ export const Form = () => {
       passErr: !passValidation.includes(pass),
       ageErr: age !== "29",
       nameErr: !correctName,
-      rutaErr: ![
-        "Ruta",
-        "ruta",
-        "rutele",
-        "Ugne",
-        "ugne",
-        "Inga",
-        "inga",
-      ].includes(ruta),
     };
 
     setError(newErrors);
@@ -65,7 +51,7 @@ export const Form = () => {
 
     // If all validations pass, redirect to birthday page
     if (!Object.values(newErrors).some((value) => value)) {
-      router.push("/as-ainius");
+              router.push("/as-martyna");
     }
   };
 
@@ -93,7 +79,7 @@ export const Form = () => {
       <div className={styles.photo_container}>
         {!name ? (
           <Image
-            src="/cake.svg"
+            src="/cake.png"
             alt="birthday cake"
             width={150}
             height={150}
@@ -105,7 +91,7 @@ export const Form = () => {
           />
         ) : eyeClosed ? (
           <Image
-            src="/closed.jpg"
+            src="/martyna-2.jpg"
             alt="eye"
             width={150}
             height={150}
@@ -119,7 +105,7 @@ export const Form = () => {
           />
         ) : (
           <Image
-            src="/open.jpg"
+            src="/martyna-2.jpg"
             alt="eye"
             width={150}
             height={150}
@@ -160,7 +146,7 @@ export const Form = () => {
           <label>Kiek tau metų?</label>
           {err.ageErr ? <ErrorBox text="🤨 Tau ne tiek metu..." /> : null}
         </div>
-        <div className={styles.user_box}>
+        {/* <div className={styles.user_box}>
           <input
             type="text"
             name=""
@@ -172,7 +158,7 @@ export const Form = () => {
           />
           <label>Šauniausios merginos vardas</label>
           {err.rutaErr ? <ErrorBox text="😔 sad..." /> : null}
-        </div>
+        </div> */}
         <div className={styles.user_box}>
           <input
             type={eyeClosed ? "password" : "text"}

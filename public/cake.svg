@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
     <!-- Cake base -->
-    <path d="M30 100H120V130C120 135.523 115.523 140 110 140H40C34.4772 140 30 135.523 30 130V100Z" fill="#2b6cb0" />
+    <path d="M30 100H120V130C120 135.523 115.523 140 110 140H40C34.4772 140 30 135.523 30 130V100Z" fill="#7E8C69" />
 
     <!-- Cake top layer -->
-    <path d="M40 70H110V100H40V70Z" fill="#48bb78" />
+    <path d="M40 70H110V100H40V70Z" fill="#9CAD8C" />
 
     <!-- Cake middle layer -->
-    <path d="M50 40H100V70H50V40Z" fill="#2b6cb0" />
+    <path d="M50 40H100V70H50V40Z" fill="#7E8C69" />
 
     <!-- Cake top -->
-    <path d="M60 20H90V40H60V20Z" fill="#48bb78" />
+    <path d="M60 20H90V40H60V20Z" fill="#9CAD8C" />
 
     <!-- Candle 1 -->
-    <rect x="65" y="10" width="4" height="10" fill="#FFD700" />
-    <circle cx="67" cy="10" r="2" fill="#FF4500" />
+    <rect x="65" y="10" width="4" height="10" fill="#D2DB76" />
+    <circle cx="67" cy="10" r="2" fill="#FFC3CC" />
 
     <!-- Candle 2 -->
-    <rect x="75" y="10" width="4" height="10" fill="#FFD700" />
-    <circle cx="77" cy="10" r="2" fill="#FF4500" />
+    <rect x="75" y="10" width="4" height="10" fill="#D2DB76" />
+    <circle cx="77" cy="10" r="2" fill="#FFC3CC" />
 
     <!-- Candle 3 -->
-    <rect x="85" y="10" width="4" height="10" fill="#FFD700" />
-    <circle cx="87" cy="10" r="2" fill="#FF4500" />
+    <rect x="85" y="10" width="4" height="10" fill="#D2DB76" />
+    <circle cx="87" cy="10" r="2" fill="#FFC3CC" />
 
     <!-- Frosting decorations -->
     <path

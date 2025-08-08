@@ -5,7 +5,9 @@
   justify-content: center;
   min-height: 100vh;
   padding: 1rem;
-  background: linear-gradient(135deg, #7cb9a3 0%, #5a8db3 100%);
+  background: linear-gradient(-45deg, #FFC3CC, #D2DB76, #E8F086, #FFC3CC, #D2DB76);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
   transition: background 0.5s ease;
   position: relative;
   overflow: hidden;
@@ -22,14 +24,14 @@
   left: 0;
   z-index: -1; /* Place behind content */
   content: "";
-  background-image: url("/aniusas.jpeg");
-  background-repeat: repeat;
+  /* background-image: url("/aniusas.jpeg");
+  background-repeat: repeat; */
   background-size: 200px;
   pointer-events: none;
 }
 
 .main.muTheme {
-  background: linear-gradient(135deg, #da291c, #000000);
+  background: linear-gradient(135deg, #D2DB76, #28301C);
 }
 
 .main.muTheme::before {
@@ -74,8 +76,8 @@
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
-  color: #2b6cb0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #28301C;
+  box-shadow: 0 4px 8px rgba(210, 219, 118, 0.2);
   transition: all 0.3s ease;
   z-index: 2;
   display: flex;
@@ -86,12 +88,12 @@
 
 .themeButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px rgba(210, 219, 118, 0.3);
 }
 
 .main.muTheme .themeButton {
   background: #ffffff;
-  color: #da291c;
+  color: #28301C;
   font-weight: 600;
 }
 
@@ -134,7 +136,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #5a8db3, #7cb9a3);
+  background: linear-gradient(135deg, #D2DB76, #E8F086);
   padding: 80px 40px 40px 40px;
   position: relative;
   overflow: hidden;
@@ -147,7 +149,7 @@
 }
 
 .container.muTheme {
-  background: linear-gradient(135deg, #da291c, #000000);
+  background: linear-gradient(135deg, #D2DB76, #28301C);
 }
 
 .container.muTheme::before {
@@ -168,21 +170,21 @@
   margin-top: 40px;
   position: relative;
   z-index: 2;
-  background: #f5f5f5;
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .muTheme .content {
   background: rgba(255, 255, 255, 0.95);
   padding: 40px;
-  box-shadow: 0 15px 25px rgba(218, 41, 28, 0.2);
+  box-shadow: 0 15px 25px rgba(210, 219, 118, 0.2);
 }
 
 .content h1 {
-  color: #2b6cb0;
-  font-family: "Sour Gummy", sans-serif;
+  color: #28301C;
+  font-family: "Spectral", sans-serif;
   font-size: 2.5rem;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 4px rgba(210, 219, 118, 0.2);
 }
 
 .muTheme .content h1 {
@@ -194,7 +196,7 @@
   color: #666;
   font-size: 1.2rem;
   margin-bottom: 40px;
-  font-family: "Inter", sans-serif;
+  font-family: "Karla", sans-serif;
 }
 
 .wishesContainer {
@@ -214,7 +216,7 @@
   margin: 0 auto;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(210, 219, 118, 0.1);
   transition: all 0.3s ease;
   background: white;
   display: flex;
@@ -226,7 +228,7 @@
 
 .cardWrapper:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 40px rgba(210, 219, 118, 0.2);
 }
 
 .avatarWrapper {
@@ -245,7 +247,7 @@
   aspect-ratio: 1;
   border-radius: 10px;
   object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(210, 219, 118, 0.1);
 }
 
 .wishBubble {
@@ -259,7 +261,7 @@
   margin: 0 0 1em 0;
   font-size: 1rem;
   line-height: 1.5;
-  color: #4a5568;
+  color: #28301C;
 }
 
 .wishBubble p:last-child {
@@ -277,7 +279,7 @@
 }
 
 .navButton {
-  background: #4a90e2;
+  background: #D2DB76;
   border: none;
   border-radius: 8px;
   padding: 12px 24px;
@@ -288,11 +290,11 @@
   font-size: 1rem;
   color: white;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(210, 219, 118, 0.1);
 }
 
 .navButton:hover {
-  background: #357abd;
+  background: #28301C;
   transform: translateY(-2px);
 }
 
@@ -408,7 +410,7 @@
 
 .muTheme .cardWrapper {
   border-radius: 15px;
-  box-shadow: 0 8px 32px rgba(218, 41, 28, 0.15);
+  box-shadow: 0 8px 32px rgba(210, 219, 118, 0.15);
   transition: transform 0.3s ease;
   height: 100%;
   display: flex;
@@ -434,11 +436,11 @@
 .muTheme .avatar {
   width: 100px !important;
   height: 100px !important;
-  border: 3px solid #da291c;
+  border: 3px solid #D2DB76;
 }
 
 .muTheme .cardTitle {
-  color: #da291c;
+  color: #D2DB76;
   font-size: 1.3rem;
   text-align: center;
   margin: 0;
@@ -495,4 +497,29 @@
 .videoButton:hover::before,
 .videoButton:active {
   /* Remove all these styles */
+}
+
+/* Animated gradient keyframes */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@-webkit-keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

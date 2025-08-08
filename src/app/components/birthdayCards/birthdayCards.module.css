@@ -114,7 +114,7 @@
   padding: 1rem 2rem;
   border: none;
   border-radius: 1rem;
-  background: #2b6cb0;
+  background: #2d4a22;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -124,7 +124,7 @@
 }
 
 .navButton:hover {
-  background: #2c5282;
+  background: #2d4a22;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(43, 108, 176, 0.3);
 }
@@ -235,7 +235,7 @@
 .cardTitle {
   font-size: 2rem;
   font-weight: 600;
-  font-family: "Sour Gummy", sans-serif;
+  font-family: "Spectral", sans-serif;
   color: rgb(43, 108, 176);
   text-align: center;
   margin: 0;
@@ -245,7 +245,7 @@
   padding-top: 10px;
   font-size: 1.75rem;
   font-weight: 600;
-  font-family: "Sour Gummy", sans-serif;
+  font-family: "Spectral", sans-serif;
   color: rgb(43, 108, 176);
   text-align: center;
   margin: 0;
@@ -290,7 +290,7 @@
 }
 
 .videoButton {
-  background: #2b6cb0;
+  background: #2d4a22;
   border: none;
   border-radius: 12px;
   padding: 12px 24px;
@@ -330,7 +330,7 @@
 .videoButton:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(43, 108, 176, 0.3);
-  background: #2c5282;
+  background: #2d4a22;
 }
 
 .videoButton:hover::before {

@@ -6,25 +6,25 @@
   padding: 40px;
   background: rgba(255, 255, 255, 0.95);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(43, 108, 176, 0.2);
+  box-shadow: 0 15px 25px rgba(241, 200, 203, 0.3);
   border-radius: 20px;
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(43, 108, 176, 0.1);
+  border: 2px solid rgba(210, 219, 118, 0.2);
 }
 
 .login_box h1 {
   margin: 0 0 30px;
   padding: 0;
-  color: #2b6cb0;
+  color: #2d4a22;
   text-align: center;
-  font-family: "Sour Gummy", sans-serif;
+  font-family: "Spectral", sans-serif;
   font-size: 2.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .login_box .user_box {
   position: relative;
-  font-family: "Inter";
+  font-family: "Karla", sans-serif;
   margin-bottom: 30px;
 }
 
@@ -34,14 +34,14 @@
   font-size: 16px;
   color: #333;
   border: none;
-  border-bottom: 2px solid #2b6cb0;
+  border-bottom: 2px solid #D2DB76;
   outline: none;
   background: transparent;
   transition: all 0.3s ease;
 }
 
 .login_box .user_box input:focus {
-  border-bottom-color: #48bb78;
+  border-bottom-color: #D2DB76;
 }
 
 .login_box .user_box label {
@@ -58,23 +58,22 @@
 .login_box .user_box input:valid ~ label {
   top: -20px;
   left: 0;
-  color: #2b6cb0;
+  color: #2d4a22;
   font-size: 14px;
   font-weight: 600;
 }
 
 .login {
-  font-family: "Sour Gummy", sans-serif;
   width: 100%;
   color: white;
-  background: linear-gradient(135deg, #2b6cb0, #48bb78);
+  background: linear-gradient(135deg, #D2DB76, #A9B464, #DCE59C);
   cursor: pointer;
   border: 0;
   border-radius: 50px;
   font-weight: 600;
   padding: 12px 0;
   font-size: 1.1rem;
-  box-shadow: 0 4px 15px rgba(43, 108, 176, 0.3);
+  box-shadow: 0 4px 15px rgba(210, 219, 118, 0.3);
   transition: all 0.4s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -82,7 +81,7 @@
 
 .login:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(43, 108, 176, 0.4);
+  box-shadow: 0 6px 20px rgba(169, 180, 100, 0.4);
 }
 
 .eye {
@@ -91,7 +90,7 @@
   top: 8px;
   cursor: pointer;
   font-size: 24px;
-  color: #2b6cb0;
+  color: #2d4a22;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
@@ -101,13 +100,13 @@
 }
 
 .eye:hover {
-  color: #48bb78;
+  color: #D2DB76;
   transform: scale(1.1);
 }
 
 .eye img {
-  filter: invert(31%) sepia(98%) saturate(1824%) hue-rotate(194deg)
-    brightness(96%) contrast(101%);
+  filter: invert(20%) sepia(25%) saturate(2000%) hue-rotate(80deg)
+    brightness(85%) contrast(120%);
   width: 28px !important;
   height: 28px !important;
   object-fit: contain;
@@ -312,7 +311,7 @@
   margin: 18px 0 24px 0;
   font-size: 0.98rem;
   justify-content: flex-start;
-  color: #2b6cb0;
+  color: #2d4a22;
 }
 
 /* Custom styled checkbox */
@@ -320,7 +319,7 @@
   appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #2b6cb0;
+  border: 2px solid #2d4a22;
   border-radius: 6px;
   background: #fff;
   outline: none;
@@ -337,8 +336,8 @@
   cursor: pointer;
 }
 .privacyRow input[type="checkbox"]:checked {
-  background: linear-gradient(135deg, #2b6cb0 60%, #48bb78 100%);
-  border-color: #48bb78;
+  background: linear-gradient(135deg, #2d4a22 60%, #D2DB76 100%);
+  border-color: #D2DB76;
 }
 .privacyRow input[type="checkbox"]:checked::after {
   content: "";
@@ -359,7 +358,7 @@
 .policyLink {
   background: none;
   border: none;
-  color: #2b6cb0;
+  color: #2d4a22;
   text-decoration: underline;
   cursor: pointer;
   font-weight: 600;
@@ -368,13 +367,13 @@
   transition: color 0.2s;
 }
 .policyLink:hover {
-  color: #48bb78;
+  color: #D2DB76;
 }
 
 .forgotPassword {
   background: none;
   border: none;
-  color: #2b6cb0;
+  color: #2d4a22;
   font-size: 0.9rem;
   cursor: pointer;
   padding: 8px 0;
@@ -386,37 +385,41 @@
 }
 
 .forgotPassword:hover {
-  color: #48bb78;
+  color: #D2DB76;
 }
 
 .passwordHint {
-  background: rgba(43, 108, 176, 0.1);
+  background: rgba(210, 219, 118, 0.15);
   border-radius: 8px;
   padding: 12px;
   margin-top: 12px;
   animation: fadeIn 0.3s ease-out;
+  border: 1px solid rgba(40, 48, 28, 0.2);
 }
 
 .passwordHint p {
-  color: #2b6cb0;
+  color: #2d4a22;
   font-size: 0.95rem;
   margin: 0;
   line-height: 1.4;
+  font-weight: 500;
 }
 
 .hintConfirmation {
-  background: rgba(43, 108, 176, 0.1);
+  background: rgba(210, 219, 118, 0.15);
   border-radius: 8px;
   padding: 16px;
   margin-top: 12px;
   animation: fadeIn 0.3s ease-out;
+  border: 1px solid rgba(40, 48, 28, 0.2);
 }
 
 .hintConfirmation p {
-  color: #2b6cb0;
+  color: #2d4a22;
   font-size: 0.95rem;
   margin: 0 0 16px 0;
   line-height: 1.4;
+  font-weight: 500;
 }
 
 .hintButtons {
@@ -437,22 +440,24 @@
 }
 
 .confirmHint {
-  background: #2b6cb0;
+  background: #D2DB76;
   color: white;
 }
 
 .confirmHint:hover {
-  background: #48bb78;
+  background: #2d4a22;
   transform: translateY(-1px);
 }
 
 .cancelHint {
-  background: rgba(43, 108, 176, 0.1);
-  color: #2b6cb0;
+  background: rgba(210, 219, 118, 0.15);
+  color: #2d4a22;
+  border: 1px solid rgba(40, 48, 28, 0.3);
+  font-weight: 500;
 }
 
 .cancelHint:hover {
-  background: rgba(43, 108, 176, 0.2);
+  background: rgba(210, 219, 118, 0.25);
   transform: translateY(-1px);
 }
 
@@ -493,7 +498,7 @@
 }
 
 .modal h2 {
-  color: #2b6cb0;
+  color: #2d4a22;
   margin-bottom: 16px;
   font-size: 1.4rem;
 }
@@ -505,7 +510,7 @@
 }
 
 .closeModal {
-  background: #2b6cb0;
+  background: #2d4a22;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -516,5 +521,5 @@
   transition: background 0.2s;
 }
 .closeModal:hover {
-  background: #48bb78;
+  background: #D2DB76;
 }

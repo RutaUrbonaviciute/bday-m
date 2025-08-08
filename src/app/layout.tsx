@@ -3,49 +3,49 @@ import "./globals.css";
 import "./reset.css";
 
 export const metadata: Metadata = {
-  title: "Ainiaus bday",
+  title: "Martynos bday",
   description:
-    "aniuso gimtadienis. Su gimtadieniu ainiusai! Džiaukis kol 29! <3",
+    "Martynos gimtadienis. Su gimtadieniu Martyna! Džiaukis kol 29! <3",
   icons: {
     icon: [
       {
-        url: "/tt.jpg",
+        url: "/martyna.jpg",
         type: "image/jpeg",
         sizes: "32x32",
       },
       {
-        url: "/tt.jpg",
+        url: "/martyna.jpg",
         type: "image/jpeg",
         sizes: "16x16",
       },
     ],
     apple: [
       {
-        url: "/tt.jpg",
+        url: "/martyna.jpg",
         type: "image/jpeg",
         sizes: "180x180",
       },
     ],
   },
   openGraph: {
-    title: "Ainiaus bday",
+    title: "Martynos bday",
     description:
-      "aniuso gimtadienis. Su gimtadieniu ainiusai! Džiaukis kol 29! <3",
+      "Martynos gimtadienis. Su gimtadieniu Martyna! Džiaukis kol 29! <3",
     images: [
       {
-        url: "/tt.jpg",
+        url: "/martyna.jpg",
         width: 1200,
         height: 630,
-        alt: "Ainiaus Birthday",
+        alt: "Martynos Birthday",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ainiaus bday",
+    title: "Martynos bday",
     description:
-      "aniuso gimtadienis. Su gimtadieniu ainiusai! Džiaukis kol 29! <3",
-    images: ["/tt.jpg"],
+      "Martynos gimtadienis. Su gimtadieniu Martyna! Džiaukis kol 29! <3",
+    images: ["/martyna.jpg"],
   },
 };
 
@@ -57,11 +57,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" type="image/jpeg" href="/tt.jpg" sizes="any" />
+        <link rel="icon" type="image/jpeg" href="/martyna.jpg" sizes="any" />
         <link
           rel="apple-touch-icon"
           type="image/jpeg"
-          href="/tt.jpg"
+          href="/martyna.jpg"
           sizes="180x180"
         />
         <link
