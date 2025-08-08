@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import styles from "./birthdayCards.module.css";
 
 interface SpecialCard {
@@ -29,15 +30,41 @@ export const BirthdayCards = ({
   onPrevCard,
   onNextCard,
 }: BirthdayCardsProps) => {
+  const [videoLoading, setVideoLoading] = useState<{ [key: number]: boolean }>({});
+  const [videoError, setVideoError] = useState<{ [key: number]: boolean }>({});
+  
   // Preload next and previous images for better performance
   const nextIndex = (currentCardIndex + 1) % cards.length;
   const prevIndex = currentCardIndex === 0 ? cards.length - 1 : currentCardIndex - 1;
+  
+  // Preload videos for slideshow cards
+  useEffect(() => {
+    cards.forEach((card, index) => {
+      if (card.isSlideshow) {
+        setVideoLoading(prev => ({ ...prev, [index]: true }));
+        const video = document.createElement('video');
+        video.preload = 'metadata';
+        video.onloadedmetadata = () => {
+          setVideoLoading(prev => ({ ...prev, [index]: false }));
+        };
+        video.onerror = () => {
+          setVideoError(prev => ({ ...prev, [index]: true }));
+          setVideoLoading(prev => ({ ...prev, [index]: false }));
+        };
+        video.src = card.image;
+      }
+    });
+  }, [cards]);
   
   return (
     <>
       {/* Preload next and previous images for better performance */}
       <link rel="preload" as="image" href={cards[nextIndex].image} />
       <link rel="preload" as="image" href={cards[prevIndex].image} />
+      {/* Preload current video if it's a slideshow */}
+      {cards[currentCardIndex].isSlideshow && (
+        <link rel="preload" as="video" href={cards[currentCardIndex].image} />
+      )}
       <div
         className={`${styles.cardWrapper} ${
           styles[`slide${slideDirection === "right" ? "InRight" : "InLeft"}`]
@@ -67,14 +94,33 @@ export const BirthdayCards = ({
             <>
               {cards[currentCardIndex].isSlideshow ? (
                 <div className={styles.avatarWrapper}>
+                  {videoLoading[currentCardIndex] && (
+                    <div className={styles.videoLoader}>
+                      <div className={styles.spinner}></div>
+                      <p>Loading video...</p>
+                    </div>
+                  )}
+                  {videoError[currentCardIndex] && (
+                    <div className={styles.videoError}>
+                      <p>Video failed to load</p>
+                    </div>
+                  )}
                   <video
                     src={cards[currentCardIndex].image}
                     autoPlay
                     muted
                     loop
                     playsInline
-                    className={`${cards[currentCardIndex].title === "Alcengeriai" ? styles.paddingRight : ""}`}    
+                    preload="metadata"
+                    poster=""
+                    className={`${cards[currentCardIndex].title === "Alcengeriai" ? styles.paddingRight : ""} ${videoLoading[currentCardIndex] ? styles.videoHidden : ""}`}    
                     style={{ maxWidth: "500px", width: "100%" }}
+                    onLoadedMetadata={() => setVideoLoading(prev => ({ ...prev, [currentCardIndex]: false }))}
+                    onCanPlay={() => setVideoLoading(prev => ({ ...prev, [currentCardIndex]: false }))}
+                    onError={() => {
+                      setVideoError(prev => ({ ...prev, [currentCardIndex]: true }));
+                      setVideoLoading(prev => ({ ...prev, [currentCardIndex]: false }));
+                    }}
                   />
                   <div className={styles.textContainer}>
                     <h3
