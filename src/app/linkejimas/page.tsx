@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import ReactConfetti from "react-confetti";
 import { BirthdayCards } from "../components/birthdayCards/BirthdayCards";
 import styles from "./linkejimas.module.css";
 
@@ -123,27 +122,12 @@ const specialCards: SpecialCard[] = [
 ];
 
 export default function Linkejimas() {
-  const [windowSize, setWindowSize] = useState({
-    width: typeof window !== "undefined" ? window.innerWidth : 0,
-    height: typeof window !== "undefined" ? window.innerHeight : 0,
-  });
   const [showConfetti, setShowConfetti] = useState(false);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState<"left" | "right">(
     "right"
   );
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
