@@ -2,7 +2,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 
-export default function AiniusioPrivatumoTaisykles() {
+export default function MartyniusoPrivatumoTaisykles() {
   const router = useRouter();
   return (
     <div
@@ -17,7 +17,7 @@ export default function AiniusioPrivatumoTaisykles() {
     >
       <style>{`
         @media (max-width: 600px) {
-          .ainius-privacy-container {
+          .martyna-privacy-container {
             padding: 32px 10px !important;
           }
           .back-btn-theme {
@@ -43,10 +43,83 @@ export default function AiniusioPrivatumoTaisykles() {
           cursor: pointer;
           box-shadow: 0 2px 8px rgba(156, 173, 140, 0.10);
           transition: background 0.2s, transform 0.2s;
+          animation: fadeInButton 0.8s ease-out 0.3s both;
         }
         .back-btn-theme:hover {
           background: linear-gradient(135deg, #F1C8CB 60%, #F6B0BB 100%);
           transform: translateY(-2px) scale(1.03);
+        }
+        
+        /* Privacy Policy Animations */
+        .privacy-content {
+          animation: fadeInContent 1s ease-out 0.2s both;
+        }
+        
+        .privacy-title {
+          animation: fadeInTitle 0.8s ease-out 0.4s both;
+        }
+        
+        .privacy-subtitle {
+          animation: fadeInSubtitle 0.8s ease-out 0.6s both;
+        }
+        
+        .privacy-list {
+          animation: fadeInList 0.8s ease-out 0.8s both;
+        }
+        
+        @keyframes fadeInContent {
+          0% {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+        
+        @keyframes fadeInTitle {
+          0% {
+            opacity: 0;
+            transform: translateY(-15px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes fadeInSubtitle {
+          0% {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes fadeInList {
+          0% {
+            opacity: 0;
+            transform: translateY(15px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes fadeInButton {
+          0% {
+            opacity: 0;
+            transform: translateX(-20px) scale(0.9);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+          }
         }
       `}</style>
       <button
@@ -65,6 +138,7 @@ export default function AiniusioPrivatumoTaisykles() {
         }}
       >
         <div
+          className="privacy-content"
           style={{
             maxWidth: 600,
             width: "100%",
@@ -78,11 +152,12 @@ export default function AiniusioPrivatumoTaisykles() {
             boxSizing: "border-box",
           }}
         >
-          <div className="ainius-privacy-container">
-            <h1 style={{ color: "#7E8C69", marginBottom: 10 }}>
+          <div className="martyna-privacy-container">
+            <h1 className="privacy-title" style={{ color: "#7E8C69", marginBottom: 10 }}>
               Martynos Privatumo Taisyklės
             </h1>
             <h2
+              className="privacy-subtitle"
               style={{
                 color: "#9CAD8C",
                 fontWeight: 500,
@@ -93,6 +168,7 @@ export default function AiniusioPrivatumoTaisykles() {
               Aš, kurios yra gimtadienis, sutinku:
             </h2>
             <ul
+              className="privacy-list"
               style={{
                 color: "#7E8C69",
                 fontSize: "1.08rem",
@@ -105,36 +181,20 @@ export default function AiniusioPrivatumoTaisykles() {
                 Sutikti savo 29tą gimtadienį su šypsena ir gera nuotaikėle
               </li>
               <li style={{ marginBottom: 8 }}>
-                Visus ateinančius metus, iki kol būsiu pasveikintas kitą
+                Visus ateinančius metus, iki kol būsiu pasveikinta kitą
                 gimtadienį, būti su šypsena ir gera nuotaikėle
               </li>
               <li style={{ marginBottom: 8 }}>
-                Sutinku, kad esu šaunių šauniausias
+                Sutinku, kad esu šaunių šauniausia
               </li>
               <li style={{ marginBottom: 8 }}>
-                Sutinku, kad mano panelė Rūta šaunių šauniausia yra
+                Sutinku, kad gerai prikolinu ir toliau prikolinsiu
               </li>
               <li style={{ marginBottom: 8 }}>
-                Sutinku toliau gaminti skaniausius grikius savo panelei Rūtai
+                Sutinku, kad daug keliausiu, smaguriausiu ir gerai leisiu laiką ateinančius metus
               </li>
               <li style={{ marginBottom: 8 }}>
-                Sutinku, kad kai pagaminu nebūtina suvalgyti visko, nes paskui
-                būna bloga
-              </li>
-              <li style={{ marginBottom: 8 }}>
-                Sutinku, kad Rūta yra stipri muay thai preišininkė
-              </li>
-              <li style={{ marginBottom: 8 }}>
-                Sutinku, kad esu labai graži ir elegantška
-              </li>
-              <li style={{ marginBottom: 8 }}>
-                Sutinku, kad Rūta mane mėgsta labiau
-              </li>
-              <li style={{ marginBottom: 8 }}>
-                Sutinku, kad aš, Martyna - esu belekaip gera
-                programuotoja, amazing pašnekovė, rūpestinga mergina, labai
-                gerai juokauju, dainuoju, šokiu, gerai žaidžiu žaidimus, 
-                gaminu skaniai... Viską darysiu ir toliau ir būsiu tokia, nes esu BEST🎈🎂
+                Sutinku, kad aš, Martyna, esu zjbs.
               </li>
             </ul>
           </div>

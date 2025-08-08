@@ -51,18 +51,18 @@
   transition: all 0.3s ease;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
-  box-shadow: 0 4px 12px rgba(43, 108, 176, 0.2);
+  box-shadow: 0 4px 12px rgba(210, 219, 118, 0.2);
 }
 
 .ctaButton:hover {
   background: #2d4a22;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(43, 108, 176, 0.3);
+  box-shadow: 0 6px 16px rgba(210, 219, 118, 0.3);
 }
 
 .ctaButton:active {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(43, 108, 176, 0.2);
+  box-shadow: 0 2px 8px rgba(210, 219, 118, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -107,5 +107,51 @@
     margin-top: 1rem;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
+  }
+}
+
+/* Fade-in animations for success page */
+.title {
+  animation: fadeInTitle 0.8s ease-out;
+}
+
+.videoContainer {
+  animation: fadeInVideo 1s ease-out 0.3s both;
+}
+
+.ctaButton {
+  animation: fadeInButton 0.8s ease-out 0.6s both;
+}
+
+@keyframes fadeInTitle {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInVideo {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fadeInButton {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }

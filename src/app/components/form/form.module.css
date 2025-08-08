@@ -38,6 +38,8 @@
   outline: none;
   background: transparent;
   transition: all 0.3s ease;
+  animation: fadeInInput 0.8s ease-out 0.6s both;
+  margin-bottom: 16px;
 }
 
 .login_box .user_box input:focus {
@@ -90,13 +92,15 @@
   top: 8px;
   cursor: pointer;
   font-size: 24px;
-  color: #2d4a22;
+  color: #D2DB76;
+  fill: #D2DB76;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 28px;
   height: 28px;
+  animation: fadeInEye 0.8s ease-out 0.7s both;
 }
 
 .eye:hover {
@@ -105,8 +109,7 @@
 }
 
 .eye img {
-  filter: invert(20%) sepia(25%) saturate(2000%) hue-rotate(80deg)
-    brightness(85%) contrast(120%);
+  color: #D2DB76;
   width: 28px !important;
   height: 28px !important;
   object-fit: contain;
@@ -136,11 +139,24 @@
   transform: scale(1.05);
 }
 
+.photo_container img {
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
 .gif_container {
   margin-top: 20px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(43, 108, 176, 0.2);
+  box-shadow: 0 4px 15px rgba(210, 219, 118, 0.2);
   position: relative;
   animation: slideUp 0.5s ease-out forwards;
   background: transparent;
@@ -327,7 +343,7 @@
   position: relative;
   transition: border-color 0.2s, box-shadow 0.2s;
   margin-right: 6px;
-  box-shadow: 0 2px 6px rgba(43, 108, 176, 0.08);
+  box-shadow: 0 2px 6px rgba(210, 219, 118, 0.08);
   vertical-align: middle;
 }
 .privacyRow input[type="checkbox"]:hover,
@@ -352,7 +368,7 @@
   transform: rotate(45deg);
 }
 .privacyRow input[type="checkbox"]:focus {
-  box-shadow: 0 0 0 2px #4b9fe1;
+  box-shadow: 0 0 0 2px #D2DB76;
 }
 
 .policyLink {
@@ -382,6 +398,7 @@
   transition: color 0.2s;
   width: 100%;
   text-align: left;
+  animation: fadeInForgot 0.8s ease-out 0.9s both;
 }
 
 .forgotPassword:hover {
@@ -389,37 +406,75 @@
 }
 
 .passwordHint {
-  background: rgba(210, 219, 118, 0.15);
-  border-radius: 8px;
-  padding: 12px;
-  margin-top: 12px;
-  animation: fadeIn 0.3s ease-out;
-  border: 1px solid rgba(40, 48, 28, 0.2);
+  background: linear-gradient(135deg, rgba(255, 195, 204, 0.1), rgba(210, 219, 118, 0.1));
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 16px;
+  animation: fadeInHint 0.6s ease-out;
+  border: 2px solid rgba(210, 219, 118, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px; 
+  flex-wrap: wrap;
+  box-shadow: 0 8px 25px rgba(210, 219, 118, 0.15);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.passwordHint::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 195, 204, 0.05) 50%, transparent 70%);
+  animation: shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.passwordHint img {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(210, 219, 118, 0.2);
+  transition: all 0.3s ease;
+  border: 2px solid rgba(210, 219, 118, 0.3);
+}
+
+.passwordHint img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(210, 219, 118, 0.3);
+  border-color: rgba(210, 219, 118, 0.5);
 }
 
 .passwordHint p {
-  color: #2d4a22;
-  font-size: 0.95rem;
+  color: #28301C;
+  font-size: 1rem;
   margin: 0;
-  line-height: 1.4;
-  font-weight: 500;
+  line-height: 1.5;
+  font-weight: 600;
+  text-align: center;
 }
 
 .hintConfirmation {
-  background: rgba(210, 219, 118, 0.15);
-  border-radius: 8px;
-  padding: 16px;
-  margin-top: 12px;
-  animation: fadeIn 0.3s ease-out;
-  border: 1px solid rgba(40, 48, 28, 0.2);
+  background: linear-gradient(135deg, rgba(255, 195, 204, 0.1), rgba(210, 219, 118, 0.1));
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 16px;
+  animation: fadeInHint 0.6s ease-out;
+  border: 2px solid rgba(210, 219, 118, 0.3);
+  box-shadow: 0 8px 25px rgba(210, 219, 118, 0.15);
+  backdrop-filter: blur(10px);
 }
 
 .hintConfirmation p {
-  color: #2d4a22;
-  font-size: 0.95rem;
-  margin: 0 0 16px 0;
-  line-height: 1.4;
-  font-weight: 500;
+  color: #28301C;
+  font-size: 1rem;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+  font-weight: 600;
+  text-align: center;
 }
 
 .hintButtons {
@@ -430,35 +485,38 @@
 
 .confirmHint,
 .cancelHint {
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   border: none;
-  font-weight: 500;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(210, 219, 118, 0.2);
 }
 
 .confirmHint {
-  background: #D2DB76;
+  background: linear-gradient(135deg, #D2DB76, #E8F086);
   color: white;
 }
 
 .confirmHint:hover {
-  background: #2d4a22;
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, #28301C, #2d4a22);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(210, 219, 118, 0.3);
 }
 
 .cancelHint {
-  background: rgba(210, 219, 118, 0.15);
-  color: #2d4a22;
-  border: 1px solid rgba(40, 48, 28, 0.3);
-  font-weight: 500;
+  background: linear-gradient(135deg, rgba(255, 195, 204, 0.2), rgba(210, 219, 118, 0.2));
+  color: #28301C;
+  border: 2px solid rgba(210, 219, 118, 0.4);
+  font-weight: 600;
 }
 
 .cancelHint:hover {
-  background: rgba(210, 219, 118, 0.25);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, rgba(255, 195, 204, 0.3), rgba(210, 219, 118, 0.3));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(210, 219, 118, 0.25);
 }
 
 @keyframes fadeIn {
@@ -469,6 +527,18 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
 
@@ -488,7 +558,7 @@
 .modal {
   background: #fff;
   border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(43, 108, 176, 0.18);
+  box-shadow: 0 8px 32px rgba(210, 219, 118, 0.18);
   padding: 36px 28px 24px 28px;
   max-width: 400px;
   width: 90vw;
@@ -522,4 +592,128 @@
 }
 .closeModal:hover {
   background: #D2DB76;
+}
+
+/* Form animations */
+.login_box {
+  animation: fadeInForm 0.8s ease-out;
+}
+
+.login_box h1 {
+  animation: fadeInTitle 0.8s ease-out 0.2s both;
+}
+
+.photo_container {
+  animation: fadeInImage 0.8s ease-out 0.4s both;
+}
+
+.login_box .user_box {
+  animation: fadeInInput 0.8s ease-out 0.6s both;
+}
+
+.login {
+  animation: fadeInButton 0.8s ease-out 0.8s both;
+}
+
+.privacyRow {
+  animation: fadeInPrivacy 0.8s ease-out 1s both;
+}
+
+@keyframes fadeInForm {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInTitle {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInImage {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fadeInInput {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInButton {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInPrivacy {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInHint {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInEye {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes fadeInForgot {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

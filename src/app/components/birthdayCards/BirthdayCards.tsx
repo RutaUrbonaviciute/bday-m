@@ -57,7 +57,16 @@ export const BirthdayCards = ({
             <>
               {cards[currentCardIndex].isSlideshow ? (
                 <div className={styles.avatarWrapper}>
-                  <video src={cards[currentCardIndex].image} autoPlay muted loop  style={{maxWidth: "500px", width: "100%"}}/>
+                  <video
+                    src={cards[currentCardIndex].image}
+                    autoPlay
+                    muted
+                    loop
+                    style={{ maxWidth: "500px", width: "100%",  marginRight:
+                      cards[currentCardIndex].title === "Alcengeriai"
+                        ? "32px"
+                        : "0px", }}
+                  />
                   <div className={styles.textContainer}>
                     <h3
                       className={styles.cardTitle}
@@ -83,12 +92,6 @@ export const BirthdayCards = ({
                     className={styles.specialAvatar}
                     style={{
                       objectFit: "cover",
-                      ...(cards[currentCardIndex].id === 11 && {
-                        objectFit: "contain",
-                        maxWidth: "400px",
-                        maxHeight: "400px",
-                      }),
-                      ...(cards[currentCardIndex].style || {}),
                     }}
                     unoptimized={cards[currentCardIndex].id === 11}
                   />

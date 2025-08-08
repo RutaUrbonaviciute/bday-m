@@ -184,29 +184,7 @@ export default function Linkejimas() {
             className={styles.logo}
           />
         </div>
-      </div>
-        <>
-            <ReactConfetti
-              width={windowSize.width}
-              height={windowSize.height}
-              recycle={false}
-              numberOfPieces={200}
-              gravity={0.2}
-              colors={[
-                "#FFC3CC", // Soft Pink
-                "#D2DB76", // Lime Green
-                "#28301C", // Dark Green
-                "#FFC3CC", // Soft Pink
-                "#D2DB76", // Lime Green
-                "#ffffff", // White
-                "#FFC3CC", // Soft Pink
-                "#D2DB76", // Lime Green
-                "#28301C", // Dark Green
-                "#FFC3CC", // Soft Pink
-              ]}
-            />
-        </>
-    
+      </div>    
       <BirthdayCards
         cards={specialCards}
         currentCardIndex={currentCardIndex}

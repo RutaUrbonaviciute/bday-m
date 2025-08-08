@@ -120,13 +120,13 @@
   transition: all 0.3s ease;
   font-weight: 600;
   font-size: 1.2rem;
-  box-shadow: 0 4px 12px rgba(43, 108, 176, 0.2);
+  box-shadow: 0 4px 12px rgba(210, 219, 118, 0.2);
 }
 
 .navButton:hover {
   background: #2d4a22;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(43, 108, 176, 0.3);
+  box-shadow: 0 6px 16px rgba(210, 219, 118, 0.3);
 }
 
 .navButton:disabled {
@@ -209,7 +209,7 @@
 
 .cardWrapper {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   background: white;
   border-radius: 20px;
   padding: 2rem;
@@ -221,7 +221,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
 }
 
 .specialAvatar {
@@ -236,7 +235,7 @@
   font-size: 2rem;
   font-weight: 600;
   font-family: "Spectral", sans-serif;
-  color: rgb(43, 108, 176);
+  color: #28301C;
   text-align: center;
   margin: 0;
 }
@@ -246,7 +245,7 @@
   font-size: 1.75rem;
   font-weight: 600;
   font-family: "Spectral", sans-serif;
-  color: rgb(43, 108, 176);
+  color: #28301C;
   text-align: center;
   margin: 0;
 }
@@ -266,7 +265,6 @@
   .avatarWrapper {
     flex-direction: row;
     align-items: center;
-    gap: 2rem;
   }
 
   .specialAvatar {
@@ -301,7 +299,7 @@
   font-size: 1.1rem;
   color: white;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(43, 108, 176, 0.2);
+  box-shadow: 0 4px 12px rgba(210, 219, 118, 0.2);
   margin: 20px auto;
   font-weight: 600;
   position: relative;
@@ -329,7 +327,7 @@
 
 .videoButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(43, 108, 176, 0.3);
+  box-shadow: 0 6px 16px rgba(210, 219, 118, 0.3);
   background: #2d4a22;
 }
 
@@ -339,5 +337,7 @@
 
 .videoButton:active {
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(43, 108, 176, 0.2);
+  box-shadow: 0 2px 8px rgba(210, 219, 118, 0.2);
 }
+
+

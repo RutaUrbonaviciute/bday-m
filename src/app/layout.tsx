@@ -5,7 +5,7 @@ import "./reset.css";
 export const metadata: Metadata = {
   title: "Martynos bday",
   description:
-    "Martynos gimtadienis. Su gimtadieniu Martyna! Džiaukis kol 29! <3",
+    "Martynos gimtadienis. Su gimtadieniu Martyna! <3",
   icons: {
     icon: [
       {
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Martynos bday",
     description:
-      "Martynos gimtadienis. Su gimtadieniu Martyna! Džiaukis kol 29! <3",
+      "Martynos gimtadienis. Su gimtadieniu Martyna! <3",
     images: [
       {
         url: "/martyna.jpg",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Martynos bday",
     description:
-      "Martynos gimtadienis. Su gimtadieniu Martyna! Džiaukis kol 29! <3",
+      "Martynos gimtadienis. Su gimtadieniu Martyna! <3",
     images: ["/martyna.jpg"],
   },
 };

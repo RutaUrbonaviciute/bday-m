@@ -13,7 +13,15 @@
   text-align: center;
   max-width: 600px;
   width: 100%;
-  animation: fadeIn 1s ease-out;
+  animation: fadeInCard 0.8s ease-out;
+}
+
+.content h1 {
+  animation: fadeInTitle 0.8s ease-out 0.2s both;
+}
+
+.message {
+  animation: fadeInContent 0.8s ease-out 0.4s both;
 }
 
 .content h1 {
@@ -41,12 +49,34 @@
   animation: pulse 1.5s infinite;
 }
 
-@keyframes fadeIn {
-  from {
+@keyframes fadeInCard {
+  0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px) scale(0.95);
   }
-  to {
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInTitle {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInContent {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
   }

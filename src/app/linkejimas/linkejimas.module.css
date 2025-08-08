@@ -523,3 +523,79 @@
     background-position: 0% 50%;
   }
 }
+
+/* Fade-in animations for birthday cards */
+.cardWrapper {
+  animation: fadeInCard 0.6s ease-out;
+}
+
+.specialAvatar {
+  animation: fadeInImage 0.8s ease-out 0.2s both;
+}
+
+.cardTitle {
+  animation: fadeInTitle 0.6s ease-out 0.4s both;
+}
+
+.wishBubble {
+  animation: fadeInContent 0.6s ease-out 0.6s both;
+}
+
+.navButton {
+  animation: fadeInButton 0.6s ease-out 0.8s both;
+}
+
+@keyframes fadeInCard {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInImage {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fadeInTitle {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInContent {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInButton {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

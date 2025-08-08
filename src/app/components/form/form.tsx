@@ -23,7 +23,11 @@ export const Form = () => {
 "kuba",
 "kubyte",
 "Kuba",
-"Kubyte"
+"Kubyte",
+"cuba",
+"Cuba",
+"cubyte",
+"Cubyte",
   ];
   const correctName = martynaValidation.includes(name);
   const [showPasswordHint, setShowPasswordHint] = useState(false);
@@ -204,8 +208,7 @@ export const Form = () => {
           {showHintConfirmation && (
             <div className={styles.hintConfirmation}>
               <p>
-                Ar tikrai nori užuominos? Gali būti, kad po jos bus dar
-                sunkiau...
+                Ar tikrai nori užuominos? 
               </p>
               <div className={styles.hintButtons}>
                 <button
@@ -225,10 +228,9 @@ export const Form = () => {
           )}
           {showPasswordHint && (
             <div className={styles.passwordHint}>
-              <p>
-                skamba panašiai kaip Rūtos netflixo slaptažodis, tik tą daryti
-                ne netflixą, o Rūtą
-              </p>
+             <Image src="/kubyzas.jpeg" alt="Kubyte" width={100} height={100} style={{borderRadius: "8px"}} />
+             <Image src="/libre.webp" alt="Kubyte" width={100} height={100} style={{borderRadius: "8px"}} />
+             <Image src="/cuba.png" alt="Kubyte" width={100} height={100} style={{borderRadius: "8px"}} />
             </div>
           )}
         </div>
@@ -242,7 +244,7 @@ export const Form = () => {
           <label htmlFor="policy">
             Sutinku su
             <a
-              href="/ainiuso-privatumo-taisykles"
+              href="/martyniuso-privatumo-taisykles"
               className={styles.policyLink}
               target="_blank"
               rel="noopener noreferrer"
