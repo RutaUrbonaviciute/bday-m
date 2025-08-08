@@ -140,7 +140,8 @@
   margin-right: 32px;
 }
 
-.videoLoader {
+.videoLoader,
+.imageLoader {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -197,6 +198,70 @@
   font-size: 14px;
   color: #2d4a22;
   font-weight: 500;
+}
+
+/* Card Animation States */
+.cardHidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.cardVisible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-in, transform 0.6s ease-in;
+}
+
+/* Image Animation States */
+.imageLoading {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.imageLoaded {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+}
+
+/* Video Animation States */
+.videoHidden {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Enhanced Avatar Animation */
+.specialAvatar {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.specialAvatar:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Text Animation */
+.cardTitle,
+.cardTitleFirst {
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.wishBubble {
+  animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
