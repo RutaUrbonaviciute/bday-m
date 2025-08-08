@@ -30,14 +30,6 @@
   pointer-events: none;
 }
 
-.main.muTheme {
-  background: linear-gradient(135deg, #D2DB76, #28301C);
-}
-
-.main.muTheme::before {
-  display: none;
-}
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -117,6 +109,10 @@
 }
 
 @media (max-width: 480px) {
+  .main {
+    justify-content: start;
+  }
+  
   .header {
     padding: 10px;
   }

@@ -29,8 +29,15 @@ export const BirthdayCards = ({
   onPrevCard,
   onNextCard,
 }: BirthdayCardsProps) => {
+  // Preload next and previous images for better performance
+  const nextIndex = (currentCardIndex + 1) % cards.length;
+  const prevIndex = currentCardIndex === 0 ? cards.length - 1 : currentCardIndex - 1;
+  
   return (
     <>
+      {/* Preload next and previous images for better performance */}
+      <link rel="preload" as="image" href={cards[nextIndex].image} />
+      <link rel="preload" as="image" href={cards[prevIndex].image} />
       <div
         className={`${styles.cardWrapper} ${
           styles[`slide${slideDirection === "right" ? "InRight" : "InLeft"}`]
@@ -42,12 +49,15 @@ export const BirthdayCards = ({
               <Image
                 src={cards[currentCardIndex].image}
                 alt={cards[currentCardIndex].title}
-                width={0}
-                height={0}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                width={600}
+                height={600}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                 className={styles.specialAvatar}
                 style={{ objectFit: "cover" }}
                 priority
+                loading="eager"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
               />
               <h3 className={styles.cardTitleFirst}>
                 sakei nenori dovanų, tai padarėm kažką rankų darbo 💖
@@ -62,10 +72,9 @@ export const BirthdayCards = ({
                     autoPlay
                     muted
                     loop
-                    style={{ maxWidth: "500px", width: "100%",  marginRight:
-                      cards[currentCardIndex].title === "Alcengeriai"
-                        ? "32px"
-                        : "0px", }}
+                    playsInline
+                    className={`${cards[currentCardIndex].title === "Alcengeriai" ? styles.paddingRight : ""}`}    
+                    style={{ maxWidth: "500px", width: "100%" }}
                   />
                   <div className={styles.textContainer}>
                     <h3
@@ -86,13 +95,16 @@ export const BirthdayCards = ({
                   <Image
                     src={cards[currentCardIndex].image}
                     alt={cards[currentCardIndex].title}
-                    width={0}
-                    height={0}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    width={600}
+                    height={600}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                     className={styles.specialAvatar}
                     style={{
                       objectFit: "cover",
                     }}
+                    loading="eager"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                     unoptimized={cards[currentCardIndex].id === 11}
                   />
                   <div className={styles.textContainer}>

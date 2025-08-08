@@ -136,7 +136,14 @@
   box-shadow: none;
 }
 
+.paddingRight {
+  margin-right: 32px;
+}
+
 @media (max-width: 768px) {
+  .paddingRight {
+    margin-right: 0px;
+  }
   .container {
     padding: 1.5rem;
   }
@@ -229,6 +236,8 @@
   max-width: 600px;
   object-fit: contain;
   overflow: hidden;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .cardTitle {
@@ -275,6 +284,8 @@
     object-fit: cover;
     border-radius: 20px;
     overflow: hidden;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   .cardTitle {
